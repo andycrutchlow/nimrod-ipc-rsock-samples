@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+nimrod:
+  rsock:
+    server:
+      servers:
+        server1:
+          host: localhost
+          port: 40280
+          maxConcurrentCalls: 4
+        server2:
+          host: localhost
+          port: 40284
+          maxConcurrentCalls: 4

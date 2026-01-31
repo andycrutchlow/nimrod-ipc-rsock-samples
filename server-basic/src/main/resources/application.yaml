@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  rsocket:
+    server.port: 0
+#  main:
+#    web-application-type: none
+nimrod:
+  rsock:
+    server:
+      name: server1
+      port: 40280
