@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.nimrodtechs.samples.grpc";
+option java_outer_classname = "PricingProto";
+
+service PricingService {
+  rpc GetPrice (PriceRequest) returns (PriceResponse);
+}
+
+message PriceRequest {
+  string ccyPair = 1;
+  string tenor = 2;
+  int64 timeSent = 3;
+}
+
+message PriceResponse {
+  string ccyPair = 1;
+  string tenor = 2;
+  double bid = 3;
+  double ask = 4;
+  int64 timeSent = 5;
+  int64 timeReceived = 6;
+}

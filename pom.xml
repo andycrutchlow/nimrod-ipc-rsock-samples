@@ -17,6 +17,9 @@
         <module>common</module>
         <module>server-basic</module>
         <module>client-basic</module>
+        <module>grpc-common</module>
+        <module>grpc-server-basic</module>
+        <module>grpc-client-basic</module>
     </modules>
 
     <properties>
