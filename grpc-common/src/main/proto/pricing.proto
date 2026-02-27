@@ -5,20 +5,20 @@ option java_package = "com.nimrodtechs.samples.grpc";
 option java_outer_classname = "PricingProto";
 
 service PricingService {
-  rpc GetPrice (PriceRequest) returns (PriceResponse);
+  rpc GetPrice (GrpcPriceRequest) returns (GrpcPriceResponse);
 }
 
-message PriceRequest {
+message GrpcPriceRequest {
   string ccyPair = 1;
   string tenor = 2;
   int64 timeSent = 3;
 }
 
-message PriceResponse {
+message GrpcPriceResponse {
   string ccyPair = 1;
   string tenor = 2;
-  double bid = 3;
-  double ask = 4;
-  int64 timeSent = 5;
+  string price = 3;
+  int64 timeSent = 4;
+  int64 timeResponded = 5;
   int64 timeReceived = 6;
 }

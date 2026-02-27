@@ -5,7 +5,7 @@ import com.nimrodtechs.ipcrsock.annotations.SchedulerType;
 import com.nimrodtechs.samples.dto.PriceRequest;
 import com.nimrodtechs.samples.dto.PriceResponse;
 
-@NimrodRmiInterface(serviceName = "server1", concurrency = 4, scheduler = SchedulerType.PARALLEL)
+@NimrodRmiInterface(serviceName = "server1", concurrency = 8, scheduler = SchedulerType.PARALLEL)
 public interface PricingServiceRmiInterface {
     public PriceResponse getPrice(PriceRequest request) throws Exception;
 }

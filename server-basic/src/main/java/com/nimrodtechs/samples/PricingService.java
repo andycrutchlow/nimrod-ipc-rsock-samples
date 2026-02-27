@@ -18,6 +18,6 @@ public class PricingService implements PricingServiceRmiInterface {
 
     @Override
     public PriceResponse getPrice(PriceRequest request) throws Exception {
-        return new PriceResponse(request.ccyPair(),request.tenor(),new BigDecimal("1.1234"),request.timeSent(),(request.timeSent() != 0 ? System.nanoTime() : 0));
+        return new PriceResponse(request.ccyPair(),request.tenor(),"1.1234",request.timeSent(),(request.timeSent() != 0 ? System.nanoTime() : 0));
     }
 }

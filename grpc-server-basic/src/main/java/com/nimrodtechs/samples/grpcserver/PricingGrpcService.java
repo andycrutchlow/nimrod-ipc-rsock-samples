@@ -1,7 +1,7 @@
 package com.nimrodtechs.samples.grpcserver;
 
-import com.nimrodtechs.samples.grpc.PriceRequest;
-import com.nimrodtechs.samples.grpc.PriceResponse;
+import com.nimrodtechs.samples.grpc.GrpcPriceRequest;
+import com.nimrodtechs.samples.grpc.GrpcPriceResponse;
 import com.nimrodtechs.samples.grpc.PricingServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -11,20 +11,18 @@ public class PricingGrpcService extends PricingServiceGrpc.PricingServiceImplBas
 
     @Override
     public void getPrice(
-            PriceRequest request,
-            StreamObserver<PriceResponse> responseObserver) {
+            GrpcPriceRequest request,
+            StreamObserver<GrpcPriceResponse> responseObserver) {
 
         long received = System.nanoTime();
-
-        PriceResponse response = PriceResponse.newBuilder()
+        GrpcPriceResponse response = GrpcPriceResponse.newBuilder()
                 .setCcyPair(request.getCcyPair())
                 .setTenor(request.getTenor())
-                .setBid(1.2345)
-                .setAsk(1.2350)
+                .setPrice("1.2345")
                 .setTimeSent(request.getTimeSent())
-                .setTimeReceived(received)
+                .setTimeResponded((request.getTimeSent() != 0 ? System.nanoTime() : 0))
                 .build();
-
+        //System.out.println(Thread.currentThread().getName());
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }

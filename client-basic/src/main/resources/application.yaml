@@ -8,7 +8,7 @@ nimrod:
         server1:
           host: localhost
           port: 40280
-          maxConcurrentCalls: 4
+          maxConcurrentCalls: 8
         server2:
           host: localhost
           port: 40284

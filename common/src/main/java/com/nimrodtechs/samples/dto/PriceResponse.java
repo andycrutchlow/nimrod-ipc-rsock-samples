@@ -5,16 +5,16 @@ import java.math.BigDecimal;
 public class PriceResponse {
     private String ccyPair;
     private String tenor;
-    private BigDecimal price;
+    private String price;
     private long timeSent;
     private long timeResponded;
     private long timeReceived;
     public PriceResponse(){}
 
-    public PriceResponse(String s, String tenor, BigDecimal bigDecimal, long timeSent, long timeResponded) {
+    public PriceResponse(String s, String tenor, String price, long timeSent, long timeResponded) {
         this.ccyPair = s;
         this.tenor = tenor;
-        this.price = bigDecimal;
+        this.price = price;
         this.timeSent = timeSent;
         this.timeResponded = timeResponded;
     }
@@ -31,10 +31,10 @@ public class PriceResponse {
     public void setTenor(String tenor) {
         this.tenor = tenor;
     }
-    public BigDecimal getPrice() {
+    public String getPrice() {
         return price;
     }
-    public void setPrice(BigDecimal price) {
+    public void setPrice(String price) {
         this.price = price;
     }
     public long getTimeSent() {
