@@ -14,19 +14,24 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>common</module>
-        <module>server-basic</module>
-        <module>client-basic</module>
+        <module>nrpc-common</module>
+        <module>nrpc-server-basic</module>
+        <module>nrpc-client-basic</module>
         <module>grpc-common</module>
         <module>grpc-server-basic</module>
         <module>grpc-client-basic</module>
+        <module>pubsub-publisher-basic</module>
+        <module>pubsub-subscriber-basic</module>
+        <module>pubsub-loadtest-publisher</module>
+        <module>pubsub-loadtest-subscriber</module>
     </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <nimrod.ipc.version>4.1-SNAPSHOT</nimrod.ipc.version>
+        <nimrod.ipc.version>4.2-SNAPSHOT</nimrod.ipc.version>
     </properties>
 
     <dependencyManagement>

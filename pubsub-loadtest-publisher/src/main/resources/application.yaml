@@ -1,0 +1,6 @@
+server.port: 0
+
+nimrod:
+  rsock:
+    publisher:
+      port: 40281

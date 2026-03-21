@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>grpc-client-basic</artifactId>
+    <artifactId>nrpc-server-basic</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -18,14 +18,10 @@
     </properties>
 
     <dependencies>
+        <!-- Minimal Spring Boot runtime -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.nimrodtechs.samples</groupId>
-            <artifactId>grpc-common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.nimrodtechs.samples</groupId>
@@ -33,9 +29,10 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>net.devh</groupId>
-            <artifactId>grpc-client-spring-boot-starter</artifactId>
-            <version>2.15.0.RELEASE</version>
+            <groupId>com.nimrodtechs</groupId>
+            <artifactId>nimrod-ipc-rsock</artifactId>
+            <version>${nimrod.ipc.version}</version>
         </dependency>
+
     </dependencies>
 </project>

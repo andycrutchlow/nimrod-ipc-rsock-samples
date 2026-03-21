@@ -105,7 +105,7 @@ nimrod:
 
 <dependency>
     <groupId>com.nimrodtechs.samples</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>nrpc-common</artifactId>
 </dependency>
 
 <dependency>
@@ -176,7 +176,7 @@ nimrod:
 
 <dependency>
     <groupId>com.nimrodtechs.samples</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>nrpc-common</artifactId>
 </dependency>
 
 <dependency>
@@ -201,13 +201,13 @@ The root `pom.xml` aggregates all modules and defines shared configuration:
 
 ```xml
 <modules>
-    <module>common</module>
+    <module>nrpc-common</module>
     <module>server-basic</module>
     <module>client-basic</module>
 </modules>
 
 <properties>
-    <nimrod.ipc.version>4.1-SNAPSHOT</nimrod.ipc.version>
+    <nimrod.ipc.version>4.2-SNAPSHOT</nimrod.ipc.version>
 </properties>
 
 <dependencyManagement>

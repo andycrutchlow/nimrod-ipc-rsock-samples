@@ -1,0 +1,6 @@
+server.port: 0
+nimrod:
+  rsock:
+    subscriber:
+      setup:
+        - publisher1,localhost,40281
