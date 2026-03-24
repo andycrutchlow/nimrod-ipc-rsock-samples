@@ -11,16 +11,16 @@ This repository contains a minimal, multi-module Maven setup showing how to defi
 ```
 nimrod-ipc-rsock-samples
 ├── pom.xml                (parent / aggregator)
-├── common                 (shared RMI interfaces + DTOs)
-├── server-basic           (basic server application)
-└── client-basic           (basic client application)
+├── nrpc-common                 (shared RMI interfaces + DTOs)
+├── nrpc-server-basic            (basic server application)
+└── nrpc-client-basic            (basic client application)
 ```
 
 ---
 
-## Common module (shared contract)
+## nrpc-common module (shared contract)
 
-The `common` module contains the **shared RMI interface and data types** used by both server and client.
+The `nrpc-common` module contains the **shared RMI interface and data types** used by both server and client.
 
 ### Example RMI interface
 
@@ -42,7 +42,7 @@ public interface PricingServiceRmiInterface {
 
 ### Annotation processing
 
-The `common` module enables the Nimrod annotation processor so that server controllers and client proxies are generated at compile time.
+The `nrpc-common` module enables the Nimrod annotation processor so that server controllers and client proxies are generated at compile time.
 
 ```xml
 <annotationProcessorPaths>
@@ -60,7 +60,7 @@ No runtime reflection is required.
 
 ## ServerBasicApplication
 
-The `server-basic` module runs a **Spring Boot server** that exposes the RMI interface over Nimrod IPC (RSocket).
+The `nrpc-server-basic ` module runs a **Spring Boot server** that exposes the RMI interface over Nimrod IPC (RSocket).
 
 ### application.yaml
 
@@ -95,7 +95,7 @@ nimrod:
 - `nimrod.rsock.server.port`  
   TCP port used by Nimrod IPC for RSocket communication.
 
-### server-basic/pom.xml (key dependencies)
+### nrpc-server-basic /pom.xml (key dependencies)
 
 ```xml
 <dependency>
@@ -119,7 +119,7 @@ nimrod:
 From the repository root:
 
 ```bash
-mvn -pl server-basic spring-boot:run
+mvn -pl nrpc-server-basic  spring-boot:run
 ```
 
 The server will:
@@ -130,7 +130,7 @@ The server will:
 
 ## ClientBasicApplication
 
-The `client-basic` module runs a **Spring Boot client** that invokes the RMI interface synchronously.
+The `nrpc-client-basic ` module runs a **Spring Boot client** that invokes the RMI interface synchronously.
 
 ### application.yaml
 
@@ -166,7 +166,7 @@ nimrod:
   Client-side connection pool size.  
   Controls how many concurrent request/response calls may be in flight.
 
-### client-basic/pom.xml (key dependencies)
+### nrpc-client-basic /pom.xml (key dependencies)
 
 ```xml
 <dependency>
@@ -188,7 +188,7 @@ nimrod:
 ### Running the client
 
 ```bash
-mvn -pl client-basic spring-boot:run
+mvn -pl nrpc-client-basic  spring-boot:run
 ```
 
 The client receives an auto-generated proxy for `PricingServiceRmiInterface` and performs blocking, RPC-style calls over RSocket.
@@ -202,8 +202,8 @@ The root `pom.xml` aggregates all modules and defines shared configuration:
 ```xml
 <modules>
     <module>nrpc-common</module>
-    <module>server-basic</module>
-    <module>client-basic</module>
+    <module>nrpc-server-basic </module>
+    <module>nrpc-client-basic </module>
 </modules>
 
 <properties>
@@ -233,7 +233,7 @@ This ensures:
 
 ## ClientBasicController test endpoints
 
-The `client-basic` module exposes a simple REST controller that allows you to exercise
+The `nrpc-client-basic ` module exposes a simple REST controller that allows you to exercise
 the Nimrod IPC request/response path from a browser or HTTP client. These endpoints
 are intentionally simple and are designed to demonstrate both **single-call latency**
 and **server-side concurrency behaviour**.
@@ -370,11 +370,15 @@ concurrency to `1` will cause the same requests to be handled serially.
 
 This samples repository demonstrates:
 
-- a shared RMI contract (`common`)
-- a Nimrod IPC server (`server-basic`)
-- a Nimrod IPC client (`client-basic`)
+- a shared RMI contract (`nrpc-common`)
+- a Nimrod IPC server (`nrpc-server-basic `)
+- a Nimrod IPC client (`nrpc-client-basic `)
 - annotation-driven code generation
 - synchronous request/response semantics over RSocket
 - server-side concurrency configuration without client impact
 
 The examples are intentionally minimal and designed as a starting point for more advanced usage.
+
+Added grpc equivalents for comparison. TODO Extra documentation required here.
+
+Added pubsub samples, basic and a loadtest. TODO Extra documentation and dicussion of results required here.

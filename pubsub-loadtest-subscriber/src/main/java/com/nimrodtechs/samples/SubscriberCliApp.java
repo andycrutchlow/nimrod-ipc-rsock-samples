@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 @SpringBootApplication()
-@ComponentScan(basePackages = {"com.nimrodtechs.ipcrsock.subscriber","com.nimrodtechs.ipcrsock.serialization","com.nimrodtechs.ipcrsock.common"})public class SubscriberCliApp implements CommandLineRunner {
+@ComponentScan(basePackages = {"com.nimrodtechs.ipcrsock.subscriber"})public class SubscriberCliApp implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(SubscriberCliApp.class);
 
