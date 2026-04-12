@@ -3,13 +3,12 @@ server:
 
 nimrod:
   rsock:
-    server:
-      servers:
-        server1:
-          host: localhost
-          port: 40280
-          maxConcurrentCalls: 8
-        server2:
-          host: localhost
-          port: 40284
-          maxConcurrentCalls: 4
+    client-side:
+      server1:
+        host: localhost
+        port: 40280
+        maxConcurrentCalls: 8
+      server2:
+        host: localhost
+        port: 40284
+        maxConcurrentCalls: 4

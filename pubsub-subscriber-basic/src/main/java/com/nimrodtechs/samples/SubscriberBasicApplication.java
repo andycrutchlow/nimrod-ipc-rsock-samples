@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan("com.nimrodtechs.ipcrsock")
-@ComponentScan(basePackages = {"com.nimrodtechs.ipcrsock.subscriber","com.nimrodtechs.ipcrsock.serialization","com.nimrodtechs.ipcrsock.common"})
+@ComponentScan(basePackages = {"com.nimrodtechs.ipcrsock.subscriber"})
 
 public class SubscriberBasicApplication {
     private static final Logger log = LoggerFactory.getLogger(SubscriberBasicApplication.class);
@@ -32,65 +32,79 @@ public class SubscriberBasicApplication {
     CommandLineRunner runSubscriber() {
         return args -> {
 
-            Scanner scanner = new Scanner(System.in);
-
             MessageReceiverInterface<MarketData> receiver = (publisher, subject, marketData) -> {
-                log.info("RECEIVED -> " + subject + " : latency="+(System.nanoTime() - marketData.createdAt())+ " : " + marketData);
-
+                log.info("RECEIVED -> {} : latency={} : {}",
+                        subject,
+                        (System.nanoTime() - marketData.createdAt()),
+                        marketData);
             };
+            //Delegate to another thread to let the main thread complete startup
+            Thread consoleThread = new Thread(() -> {
 
-            while (true) {
+                Scanner scanner = new Scanner(System.in);
 
-                System.out.println();
-                System.out.println("Choose subscription:");
-                System.out.println("1 - EURUSD.*");
-                System.out.println("2 - EURUSD.SPOT");
-                System.out.println("3 - EURUSD.1W");
-                System.out.println("q - quit");
-                System.out.print("> ");
+                while (true) {
+                    try {
+                        System.out.println();
+                        System.out.println("Choose subscription:");
+                        System.out.println("1 - EURUSD.*");
+                        System.out.println("2 - EURUSD.SPOT");
+                        System.out.println("3 - EURUSD.1W");
+                        System.out.println("q - quit");
+                        System.out.print("> ");
 
-                String input = scanner.nextLine();
+                        String input = scanner.nextLine();
 
-                switch (input) {
+                        switch (input) {
 
-                    case "1":
-                        subscriberService.subscribe(
-                                "publisher1",
-                                "EURUSD.*",
-                                receiver,
-                                MarketData.class,
-                                false
-                        );
-                        break;
+                            case "1":
+                                subscriberService.subscribe(
+                                        "publisher1",
+                                        "EURUSD.*",
+                                        receiver,
+                                        MarketData.class,
+                                        false
+                                );
+                                break;
 
-                    case "2":
-                        subscriberService.subscribe(
-                                "publisher1",
-                                "EURUSD.SPOT",
-                                receiver,
-                                MarketData.class,
-                                false
-                        );
-                        break;
+                            case "2":
+                                subscriberService.subscribe(
+                                        "publisher1",
+                                        "EURUSD.SPOT",
+                                        receiver,
+                                        MarketData.class,
+                                        false
+                                );
+                                break;
 
-                    case "3":
-                        subscriberService.subscribe(
-                                "publisher1",
-                                "EURUSD.1W",
-                                receiver,
-                                MarketData.class,
-                                false
-                        );
-                        break;
+                            case "3":
+                                subscriberService.subscribe(
+                                        "publisher1",
+                                        "EURUSD.1W",
+                                        receiver,
+                                        MarketData.class,
+                                        false
+                                );
+                                break;
 
-                    case "q":
-                        System.exit(0);
-                        break;
+                            case "q":
+                                log.info("Shutting down subscriber...");
+                                System.exit(0);
+                                break;
 
-                    default:
-                        System.out.println("Unknown option");
+                            default:
+                                System.out.println("Unknown option");
+                        }
+
+                    } catch (Exception e) {
+                        log.error("Error in console loop", e);
+                    }
                 }
-            }
+
+            }, "subscriber");
+
+            consoleThread.setDaemon(false); // important: keep JVM alive
+            consoleThread.start();
         };
     }
 }

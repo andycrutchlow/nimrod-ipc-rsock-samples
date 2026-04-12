@@ -32,26 +32,31 @@ public class PublisherBasicApplication implements SubscriptionListener {
     @Bean
     CommandLineRunner runPublisher() {
         return args -> {
-
             log.info("Publisher starting...");
-            publisherSocket.addSubscriptionListener(this);
-            while (true) {
-                MarketData msg = new MarketData("EURUSD", "SPOT", randomBid("1.123"), randomAsk("1.123"), System.nanoTime());
-                publisherSocket.publish(
-                        msg.ccyPair() + "." + msg.tenor(),
-                        msg
-                );
-                //log.info("Published message : " + msg.toString());
-                Thread.sleep(1000);
+            //Delegate to another thread to let the main thread complete startup
+            new Thread(() -> {
+                publisherSocket.addSubscriptionListener(this);
 
-                msg = new MarketData("EURUSD", "1W", randomBid("1.123")+"1", randomAsk("1.123")+"2",System.nanoTime());
-                publisherSocket.publish(
-                        msg.ccyPair() + "." + msg.tenor(),
-                        msg
-                );
-                //log.info("Published message : " + msg.toString());
-                Thread.sleep(1000);
-            }
+                while (true) {
+                    try {
+                        MarketData msg = new MarketData("EURUSD", "SPOT",
+                                randomBid("1.123"), randomAsk("1.123"), System.nanoTime());
+
+                        publisherSocket.publish(msg.ccyPair() + "." + msg.tenor(), msg);
+                        Thread.sleep(1000);
+
+                        msg = new MarketData("EURUSD", "1W",
+                                randomBid("1.123") + "1", randomAsk("1.123") + "2", System.nanoTime());
+
+                        publisherSocket.publish(msg.ccyPair() + "." + msg.tenor(), msg);
+                        Thread.sleep(1000);
+
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+                }
+            }, "publisher-thread").start();
         };
     }
 
