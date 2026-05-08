@@ -47,7 +47,7 @@ The `nrpc-common` module enables the Nimrod annotation processor so that server 
 ```xml
 <annotationProcessorPaths>
     <path>
-        <groupId>com.nimrodtechs</groupId>
+        <groupId>io.github.andycrutchlow</groupId>
         <artifactId>nimrod-ipc-rsock-processor</artifactId>
         <version>${nimrod.ipc.version}</version>
     </path>
@@ -109,7 +109,7 @@ nimrod:
 </dependency>
 
 <dependency>
-    <groupId>com.nimrodtechs</groupId>
+    <groupId>io.github.andycrutchlow</groupId>
     <artifactId>nimrod-ipc-rsock</artifactId>
 </dependency>
 ```
@@ -180,7 +180,7 @@ nimrod:
 </dependency>
 
 <dependency>
-    <groupId>com.nimrodtechs</groupId>
+    <groupId>io.github.andycrutchlow</groupId>
     <artifactId>nimrod-ipc-rsock</artifactId>
 </dependency>
 ```
@@ -212,7 +212,7 @@ The root `pom.xml` aggregates all modules and defines shared configuration:
 
 <dependencyManagement>
     <dependency>
-        <groupId>com.nimrodtechs</groupId>
+        <groupId>io.github.andycrutchlow</groupId>
         <artifactId>nimrod-ipc-rsock-parent</artifactId>
         <version>${nimrod.ipc.version}</version>
         <type>pom</type>

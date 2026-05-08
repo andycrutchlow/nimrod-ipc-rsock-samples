@@ -19,12 +19,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.nimrodtechs</groupId>
+            <groupId>io.github.andycrutchlow</groupId>
             <artifactId>nimrod-ipc-rsock</artifactId>
             <version>${nimrod.ipc.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.nimrodtechs</groupId>
+            <groupId>io.github.andycrutchlow</groupId>
             <artifactId>nimrod-ipc-rsock-annotations</artifactId>
             <version>${nimrod.ipc.version}</version>
         </dependency>
@@ -38,7 +38,7 @@
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>com.nimrodtechs</groupId>
+                            <groupId>io.github.andycrutchlow</groupId>
                             <artifactId>nimrod-ipc-rsock-processor</artifactId>
                             <version>${nimrod.ipc.version}</version>
                         </path>

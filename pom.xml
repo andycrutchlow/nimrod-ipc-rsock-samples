@@ -37,7 +37,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.nimrodtechs</groupId>
+                <groupId>io.github.andycrutchlow</groupId>
                 <artifactId>nimrod-ipc-rsock-parent</artifactId>
                 <version>${nimrod.ipc.version}</version>
                 <type>pom</type>
