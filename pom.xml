@@ -31,7 +31,8 @@
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <nimrod.ipc.version>4.2-SNAPSHOT</nimrod.ipc.version>
+<!--        <nimrod.ipc.version>4.2-SNAPSHOT</nimrod.ipc.version>-->
+        <nimrod.ipc.version>4.3.0</nimrod.ipc.version>
     </properties>
 
     <dependencyManagement>
