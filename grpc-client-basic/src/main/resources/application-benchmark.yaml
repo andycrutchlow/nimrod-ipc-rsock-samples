@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+logging:
+  level:
+    root: WARN
+grpc:
+  client:
+    pricing:
+      address: static://${benchmark.host:127.0.0.1}:${benchmark.port:9090}
+      negotiationType: plaintext
+      enableKeepAlive: false

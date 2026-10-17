@@ -1,0 +1,11 @@
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+logging:
+  level:
+    root: WARN
+grpc:
+  server:
+    address: ${benchmark.host:127.0.0.1}
+    port: ${benchmark.port:9090}

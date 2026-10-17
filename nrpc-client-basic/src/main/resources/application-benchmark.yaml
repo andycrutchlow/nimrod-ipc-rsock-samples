@@ -1,0 +1,23 @@
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+logging:
+  level:
+    root: WARN
+nimrod:
+  rsock:
+    client-side:
+      server1:
+        host: ${benchmark.host:127.0.0.1}
+        port: ${benchmark.port:40280}
+        maxConcurrentCalls: 1
+      server2:
+        host: ${benchmark.host:127.0.0.1}
+        port: ${benchmark.port:40280}
+        maxConcurrentCalls: 1
+      benchmark:
+        host: ${benchmark.host:127.0.0.1}
+        port: ${benchmark.port:40280}
+        maxConcurrentCalls: ${benchmark.concurrency:1}
+        retryMaxAttempts: 0

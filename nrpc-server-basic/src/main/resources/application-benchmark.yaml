@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+logging:
+  level:
+    root: WARN
+nimrod:
+  rsock:
+    server:
+      host: ${benchmark.host:127.0.0.1}
+      name: benchmark
+      port: ${benchmark.port:40280}

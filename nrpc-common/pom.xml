@@ -19,6 +19,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.nimrodtechs.samples</groupId>
+            <artifactId>benchmark-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.github.andycrutchlow</groupId>
             <artifactId>nimrod-ipc-rsock</artifactId>
             <version>${nimrod.ipc.version}</version>

@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.nimrodtechs.samples.grpc.benchmark";
+option java_outer_classname = "BenchmarkProto";
+service BenchmarkService { rpc Echo (RpcMessage) returns (RpcMessage); }
+message RpcMessage {
+  string run_id = 1;
+  string phase_id = 2;
+  int64 sequence = 3;
+  string ccy_pair = 4;
+  string tenor = 5;
+  string price = 6;
+  int64 checksum = 7;
+  bytes payload = 8;
+}

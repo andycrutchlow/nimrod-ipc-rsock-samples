@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+@org.springframework.context.annotation.Profile("!benchmark")
 @RestController
 @RequestMapping("/")
 public class ServerBasicController {

@@ -1,5 +1,22 @@
 # nimrod-ipc-rsock-samples
 
+## Repeatable unary comparison
+
+The benchmark profile compares Nimrod IPC, gRPC Java and native Apache Dubbo2 TCP using shared payload/processing and bounded concurrency. It reuses the existing Nimrod/gRPC applications. See [running/building the benchmarks](docs/benchmark-running.md), [developer experience](docs/developer-experience.md) and [Nimrod timeout limitations](docs/nimrod-timeouts.md).
+
+Short checks (builds first; never selects the full matrix):
+
+```sh
+python3 scripts/benchmarks/run.py --integration
+```
+
+The complete 180-run suite is manual-only:
+
+```sh
+python3 scripts/benchmarks/run.py --full
+```
+
+
 Sample projects demonstrating usage of the **Nimrod IPC RSocket** messaging library.
 
 This repository contains a minimal, multi-module Maven setup showing how to define a shared RMI interface, run a Nimrod IPC server, and invoke it from a client.

@@ -16,6 +16,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.LongAdder;
 
+@org.springframework.context.annotation.Profile("!benchmark")
 @RestController
 @RequestMapping("/")
 class ClientBasicController {

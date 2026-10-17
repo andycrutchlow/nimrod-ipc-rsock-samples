@@ -1,0 +1,11 @@
+{
+  "payloadBytes": [128, 1024, 10240, 102400],
+  "concurrency": [1, 8, 32],
+  "full": {"warmupSeconds": 30, "measurementSeconds": 120, "repetitions": 5},
+  "smoke": {"warmupSeconds": 0.3, "measurementSeconds": 0.7, "repetitions": 1},
+  "timeoutMillis": 5000,
+  "drainMillis": 30000,
+  "seed": 42,
+  "serverWorkers": 8,
+  "note": "Full execution always requires --full. Smoke results are correctness checks, not performance evidence."
+}
