@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite process supervisor. --full is required to run the 180-run matrix."""
+"""Finite process supervisor. --full selects full-duration runs, optionally filtered."""
 import argparse
 import csv
 import datetime as dt
@@ -115,7 +115,7 @@ def snapshot_connections(process, directory, role):
         save(directory / f'{role}-connections.json', {'observedEstablishedSockets': None, 'reason': 'lsof unavailable; inspect peer sockets manually'})
 
 
-def run_case(base, library, size, concurrency, repetition, warmup, measurement, timeout=None, delay=0, expected_failure=False, host="127.0.0.1"):
+def run_case(base, library, size, concurrency, repetition, warmup, measurement, timeout=None, delay=0, expected_failure=False, host="127.0.0.1", selected_matrix=None):
     timeout = timeout or SCENARIO['timeoutMillis']
     name = f'{library}-{size}B-c{concurrency}-r{repetition}' + ('-timeout' if expected_failure else '')
     directory = base / name
@@ -131,10 +131,12 @@ def run_case(base, library, size, concurrency, repetition, warmup, measurement, 
     server_cmd = java_command(server_module, server_main, [*common, f'--benchmark.output={server_dir}', f'--benchmark.server-delay-millis={delay}'])
     client_cmd = java_command(client_module, client_main, [*common, f'--benchmark.output={client_dir}'])
     save(directory / 'launch.json', {'library': library, 'port': port, 'serverCommand': server_cmd, 'clientCommand': client_cmd,
-         'smokeOnly': warmup != 30 or measurement != 120, 'expectedFailure': expected_failure, 'runId': name})
+         'smokeOnly': warmup != 30 or measurement != 120, 'expectedFailure': expected_failure, 'runId': name,
+         'selectedMatrix': selected_matrix})
     server = client = None
     start = time.monotonic()
-    result = {'runId': name, 'library': library, 'valid': False, 'expectedFailure': expected_failure}
+    result = {'runId': name, 'library': library, 'valid': False, 'expectedFailure': expected_failure,
+              'selectedMatrix': selected_matrix}
     try:
         with (directory / 'server.log').open('w') as slog, (directory / 'client.log').open('w') as clog, (directory / 'os-resources.csv').open('w') as oslog:
             writer = csv.writer(oslog); writer.writerow(['epochSeconds', 'role', 'pid', 'rssKiB', 'cpuPercent'])
@@ -202,10 +204,10 @@ def run_case(base, library, size, concurrency, repetition, warmup, measurement, 
     return result
 
 
-def main():
+def parse_args(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     modes = parser.add_mutually_exclusive_group()
-    modes.add_argument('--full', action='store_true', help='Explicitly run 180 cases with 30s warmup/120s measurement/5 repetitions')
+    modes.add_argument('--full', action='store_true', help='Run 30s warmup/120s measurement/5 repetitions; 180 cases without filters')
     modes.add_argument('--smoke', action='store_true', help='Short correctness runs (default); no performance conclusions')
     modes.add_argument('--integration', action='store_true', help='All-size smoke plus deliberately delayed-handler timeout checks')
     parser.add_argument('--implementations', nargs='+', choices=TARGETS, default=list(TARGETS))
@@ -215,12 +217,36 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--sizes', nargs='+', type=int, choices=[128, 1024, 10240, 102400])
     parser.add_argument('--concurrency', nargs='+', type=int, choices=[1, 8, 32])
-    args = parser.parse_args()
-    if args.full and (args.sizes or args.concurrency or args.implementations != list(TARGETS)):
-        parser.error('--full always runs the complete approved matrix; use --smoke for subsets')
+    return parser.parse_args(argv)
+
+
+def selected_matrix(args):
+    profile = SCENARIO['full' if args.full else 'smoke']
+    implementations = args.implementations
+    sizes = args.sizes or SCENARIO['payloadBytes']
+    concurrencies = args.concurrency or SCENARIO['concurrency']
+    performance_runs = len(implementations) * len(sizes) * len(concurrencies) * profile['repetitions']
+    timeout_checks = len(implementations) if args.integration else 0
+    return {
+        'implementations': implementations,
+        'payloadBytes': sizes,
+        'concurrency': concurrencies,
+        'warmupSeconds': profile['warmupSeconds'],
+        'measurementSeconds': profile['measurementSeconds'],
+        'repetitions': profile['repetitions'],
+        'performanceRuns': performance_runs,
+        'timeoutChecks': timeout_checks,
+        'totalRuns': performance_runs + timeout_checks,
+    }
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    matrix = selected_matrix(args)
     stamp = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     base = (args.output or ROOT / 'benchmark-results' / stamp).resolve(); base.mkdir(parents=True, exist_ok=True)
-    save(base / 'suite.json', {'mode': 'full' if args.full else 'integration' if args.integration else 'smoke', 'startedUtc': stamp, 'performanceConclusions': False})
+    save(base / 'suite.json', {'mode': 'full' if args.full else 'integration' if args.integration else 'smoke',
+         'startedUtc': stamp, 'performanceConclusions': False, 'selectedMatrix': matrix})
     if not args.skip_build:
         cmd = ['mvn', *(['-o'] if args.offline else []), 'verify', 'dependency:build-classpath', '-Dmdep.outputFile=target/benchmark-classpath.txt']
         with (base / 'build.log').open('w') as log:
@@ -231,23 +257,25 @@ def main():
         probe = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=10, check=True)
         host = next(line.split('=', 1)[1] for line in probe.stdout.splitlines() if line.startswith('BENCHMARK_HOST='))
     save(base / 'topology.json', {'host': host, 'category': 'same-host separate JVMs', 'reason': 'Dubbo2 rewrites loopback URLs; all targets use the same interface'})
-    sizes = args.sizes or SCENARIO['payloadBytes']
-    concurrencies = args.concurrency or SCENARIO['concurrency']
+    sizes = matrix['payloadBytes']
+    concurrencies = matrix['concurrency']
     files = subprocess.run(['git', 'ls-files', '-c', '-o', '--exclude-standard'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.splitlines()
     hashes = {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in files if (ROOT/name).is_file() and not name.startswith('.idea/')}
-    save(base / 'source-manifest.json', {'gitHead': subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.strip(), 'files': hashes, 'scenario': SCENARIO})
+    save(base / 'source-manifest.json', {'gitHead': subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.strip(),
+         'files': hashes, 'scenario': SCENARIO, 'selectedMatrix': matrix})
     results = []
     # Rotate library order by repetition. Never run competing benchmarks in parallel.
-    profile = SCENARIO['full' if args.full else 'smoke']
-    for rep in range(1, profile['repetitions']+1):
+    for rep in range(1, matrix['repetitions']+1):
         libraries = args.implementations[(rep-1) % len(args.implementations):] + args.implementations[:(rep-1) % len(args.implementations)]
         for size, concurrency in itertools.product(sizes, concurrencies):
             for library in libraries:
-                results.append(run_case(base, library, size, concurrency, rep, profile['warmupSeconds'], profile['measurementSeconds'], host=host))
+                results.append(run_case(base, library, size, concurrency, rep, matrix['warmupSeconds'], matrix['measurementSeconds'],
+                                        host=host, selected_matrix=matrix))
                 save(base / 'suite-results.json', results)
     if args.integration:
         for library in args.implementations:
-            results.append(run_case(base, library, 128, 1, 1, .1, .3, timeout=200, delay=1500, expected_failure=True, host=host))
+            results.append(run_case(base, library, 128, 1, 1, .1, .3, timeout=200, delay=1500, expected_failure=True,
+                                    host=host, selected_matrix=matrix))
             save(base / 'suite-results.json', results)
     failed = sum(not r.get('checkPassed') for r in results)
     print(f'{len(results)-failed}/{len(results)} checks passed. Results: {base}', flush=True)

@@ -38,7 +38,29 @@ Run the **full suite manually**, when ready:
 python3 scripts/benchmarks/run.py --full --offline
 ```
 
-Only `--full` selects the 180-run matrix: three implementations, four body sizes, concurrency 1/8/32, five repetitions, 30-second warmup and 120-second measurement. It requires at least 7.5 hours of timed phases plus readiness/drain/startup. Neither Maven builds nor integration/smoke commands execute it. The script rotates library order between repetitions and runs cases sequentially.
+Without filters, `--full` selects the 180-run matrix: three implementations, four body sizes, concurrency 1/8/32, five repetitions, 30-second warmup and 120-second measurement. It requires at least 7.5 hours of timed phases plus readiness/drain/startup. Neither Maven builds nor integration/smoke commands execute it. The script rotates library order between repetitions and runs cases sequentially.
+
+Targeted full-duration runs accept the same implementation, size and concurrency filters as smoke checks:
+
+```sh
+python3 scripts/benchmarks/run.py \
+  --full \
+  --implementations nimrod \
+  --sizes 128 1024 10240 102400 \
+  --concurrency 8 32 \
+  --offline \
+  --output benchmark-results/nimrod-single
+```
+
+This selects 40 runs (one implementation × four sizes × two concurrency levels × five repetitions). Every case retains the full 30-second warmup, 120-second measurement, validation, metrics, resource sampling and process supervision. Omitted filters retain their default dimensions. Build each desired Nimrod server scheduler configuration before launching and use a distinct output directory for each configuration; the existing source manifest records the contract source hash.
+
+The selected implementations, body sizes, concurrency levels, durations, repetition count and planned run counts are recorded as `selectedMatrix` in `suite.json`, `source-manifest.json`, each `launch.json` and each run result (including `suite-results.json`). Integration metadata counts the additional fixed delayed-handler checks separately.
+
+Test matrix selection and command acceptance without launching Maven, JVMs or benchmarks:
+
+```sh
+python3 -m unittest discover -s scripts/benchmarks/tests -v
+```
 
 `benchmark-configs/unary.json` records the shared matrix, durations, timeout, drain and payload seed. The launcher records a copy and hashes of tracked/untracked source files in `source-manifest.json`. Each repetition starts fresh client/server JVMs with `-Xms1g -Xmx1g -XX:+UseG1GC`. No per-message logging is enabled. Keep other machine workload controlled before interpreting full results.
 
