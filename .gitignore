@@ -41,3 +41,6 @@ build/
 # Generated benchmark logs, histograms and runtime manifests
 /benchmark-results/
 __pycache__/
+
+# Real-RSocket reproduction logs and reports
+/reproduction-results/
