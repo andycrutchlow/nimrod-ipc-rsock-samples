@@ -1,5 +1,7 @@
 # Security-filter Kryo RMI investigation
 
+> Historical record: version references, commands and validation statements below describe the dated investigation/design, not current build requirements. Current samples use **Nimrod IPC 4.3.1 from Maven Central**; see [release validation](release-validation.md) and the [completed 180-run benchmark report](../BENCHMARKS.md).
+
 Verified locally on 2026-10-24 with Java 21.0.8, Nimrod 4.3.1-SNAPSHOT,
 Kryo 5.5.0 and the existing generated RMI proxies over real RSocket/TCP connections.
 

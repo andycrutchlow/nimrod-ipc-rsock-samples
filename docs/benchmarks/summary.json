@@ -1,0 +1,2928 @@
+{
+  "dataset": "benchmark-results/published-baseline",
+  "datasetSha256": "ce69e44e89869b1d59b39b13895c7fe477f93f963026facef6a64c290e378529",
+  "sourceGitHead": "5540f7ab4fc6b45a1cbc3ee9c736101c2ff47442",
+  "startedUtc": "20261024T173928Z",
+  "selectedMatrix": {
+    "implementations": [
+      "nimrod",
+      "grpc",
+      "dubbo2"
+    ],
+    "payloadBytes": [
+      128,
+      1024,
+      10240,
+      102400
+    ],
+    "concurrency": [
+      1,
+      8,
+      32
+    ],
+    "warmupSeconds": 30,
+    "measurementSeconds": 120,
+    "repetitions": 5,
+    "performanceRuns": 180,
+    "timeoutChecks": 0,
+    "totalRuns": 180
+  },
+  "environment": {
+    "javaVersion": "21.0.8+12-LTS-jvmci-23.1-b72",
+    "javaVendor": "Oracle Corporation",
+    "os": "Mac OS X",
+    "osVersion": "14.5",
+    "architecture": "x86_64",
+    "availableProcessors": 16
+  },
+  "jvmArguments": {
+    "nimrod": [
+      "-XX:ThreadPriorityPolicy=1",
+      "-XX:+UnlockExperimentalVMOptions",
+      "-XX:+EnableJVMCIProduct",
+      "-XX:-UnlockExperimentalVMOptions",
+      "-Xms1g",
+      "-Xmx1g",
+      "-XX:+UseG1GC"
+    ],
+    "grpc": [
+      "-XX:ThreadPriorityPolicy=1",
+      "-XX:+UnlockExperimentalVMOptions",
+      "-XX:+EnableJVMCIProduct",
+      "-XX:-UnlockExperimentalVMOptions",
+      "-Xms1g",
+      "-Xmx1g",
+      "-XX:+UseG1GC"
+    ],
+    "dubbo2": [
+      "-XX:ThreadPriorityPolicy=1",
+      "-XX:+UnlockExperimentalVMOptions",
+      "-XX:+EnableJVMCIProduct",
+      "-XX:-UnlockExperimentalVMOptions",
+      "-Xms1g",
+      "-Xmx1g",
+      "-XX:+UseG1GC",
+      "--add-opens=java.base/java.lang=ALL-UNNAMED",
+      "--add-opens=java.base/java.util=ALL-UNNAMED",
+      "--add-opens=java.base/java.text=ALL-UNNAMED"
+    ]
+  },
+  "classpathArtifacts": {
+    "nimrod": {
+      "HdrHistogram-2.2.2.jar": "22d1d4316c4ec13a68b559e98c8256d69071593731da96136640f864fa14fad8",
+      "benchmark-common-1.0-SNAPSHOT.jar": "8c99672270fc80095a05a6dac8883ecdce4f03557e2c1eea53c915137f11b824",
+      "commons-pool2-2.12.1.jar": "5273c8bc8c0dca2211175c0d27efbd7228efae99689aac001a8e1ef8e872e9ef",
+      "jackson-annotations-2.19.2.jar": "e516743a316dcf83c572ffc9cb6e8c5e8c134880c8c5155b02f7b34e9c5dc3cf",
+      "jackson-core-2.19.2.jar": "aa77eaf29293a868c47372194f7c5287d77d9370b04ea25d3fffc1e4904b5880",
+      "jackson-databind-2.19.2.jar": "0a1bd4e9b0d670e632d40ee8c625ad376233502f03c2f5889baea95d025b47a7",
+      "jackson-datatype-jdk8-2.19.2.jar": "6055fef10756e8bd1b0e8807aa1d881338c63ca95d59271e1da4922b9a17581e",
+      "jackson-datatype-jsr310-2.19.2.jar": "9709f43e0fa5625633ee66db6c078fb1e8c7ca02092696ba95ea785dbf0fa6a1",
+      "jackson-module-parameter-names-2.19.2.jar": "5cafef98759b40a418631e91257930a5e30abc162d9a690c1e365dbbdacdfecb",
+      "jakarta.annotation-api-2.1.1.jar": "5f65fdaf424eee2b55e1d882ba9bb376be93fb09b37b808be6e22e8851c909fe",
+      "jul-to-slf4j-2.0.17.jar": "a7afcd23b9cfd1475e55c94f943b808c5922035e7e2c2a5c65a487a4106bc538",
+      "kryo5-5.5.0.jar": "5dab506f91ab06adad1acb5fe904e587c2781593a7930f003e84f6597622f3b2",
+      "log4j-api-2.24.3.jar": "5b4a0a0cd0e751ded431c162442bdbdd53328d1f8bb2bae5fc1bbeee0f66d80f",
+      "log4j-to-slf4j-2.24.3.jar": "c7f2b0c612a4eb05b1587d1c880eb4cf5f4f53850676a8ede8da2b8fabb4f73f",
+      "logback-classic-1.5.18.jar": "3e1533d0321f8815eef46750aee0111b41554f9a4644c3c4d2d404744b09f60f",
+      "logback-core-1.5.18.jar": "85139e7b57b464f8e5e36326dd81317648bed199ccc4f98cd42585f8d7571027",
+      "micrometer-commons-1.15.2.jar": "c20eb029b3e74fe261795467b420f20b2062a025dacd03d761156b9ea6d4a205",
+      "micrometer-observation-1.15.2.jar": "f8e847a10e5974b2c9ffd7169e967f41418c5fdfeaf30a97937b5d82a5d27ea6",
+      "netty-buffer-4.1.123.Final.jar": "b1d37c2b40d74552119313b1133bc18f79c3afb4913e0d5592795cd08190d396",
+      "netty-codec-4.1.123.Final.jar": "43b1376fd9c19a5c785d4a0bf2b9c0c944b731d4e172b497be3f9b8dec955971",
+      "netty-codec-dns-4.1.123.Final.jar": "6be28fa391ac2d818a156fd57be0c0bacfba8444812ff0e1b77cd9ab6f356042",
+      "netty-codec-http-4.1.123.Final.jar": "a7eeccb1b48a4ef9062f20c0d4f284ba4fec2d55823055278b387f53b9a5c7bc",
+      "netty-codec-http2-4.1.123.Final.jar": "b3cfec2c3942b20965176d6555742a0bea8cadc7c5ed79a2b587a0e1112d18f9",
+      "netty-codec-socks-4.1.123.Final.jar": "0e23d29bfc8e325c7897c1d759aa41fc14d0b0aec3c68503909772889c427792",
+      "netty-common-4.1.123.Final.jar": "0f8745b206c9ca9aa306baf175b3def26f31946b03c1a7b0dc84c4e32f8a0f22",
+      "netty-handler-4.1.123.Final.jar": "231e2a2a028aeb91e7a8c4ba3676ff6a3004a1e9a35bcacb394e86ec7f70f5dc",
+      "netty-handler-proxy-4.1.123.Final.jar": "54100da7052b4cb3f16c831ea2bdec41da463adf96e0d4494f6ec4006bc08154",
+      "netty-resolver-4.1.123.Final.jar": "fb1fc8f9be939bd551b7162714a7f5ac1e546939580c7c0a55496ae05630f01f",
+      "netty-resolver-dns-4.1.123.Final.jar": "bbceae6f4673cca42eab3509593271500b970565a2c8ca1a2bd1d171d0cda36e",
+      "netty-resolver-dns-classes-macos-4.1.123.Final.jar": "06731738b01f35e98f444bc916d921e54baaebeb48c94533455b41965268b39a",
+      "netty-resolver-dns-native-macos-4.1.123.Final-osx-x86_64.jar": "5381028c61acdb0024aef11f08a3370470671cd724ddaca774be6fde88ceb9ce",
+      "netty-transport-4.1.123.Final.jar": "100277fb20875943b33b85587fc018975992f87d707c1f9701fab4791903cdc3",
+      "netty-transport-classes-epoll-4.1.123.Final.jar": "3db30bbaba004f86221bb251168d9bbbd38eecefb42c7802b9cbca628331e156",
+      "netty-transport-native-epoll-4.1.123.Final-linux-x86_64.jar": "ebea67a93777fe8d4db4f5b23a1aa451aea1aad75a767a40a75306e32f67c9b9",
+      "netty-transport-native-unix-common-4.1.123.Final.jar": "009b20c26a522633ddc2078e0845f098770648ee9d4bd494beea9955b895856f",
+      "nimrod-ipc-rsock-4.3.1-SNAPSHOT.jar": "46ea4bafd2c93e615e52b4abbd295a9175c6b90f7518ee00156523ea9a848ad7",
+      "nimrod-ipc-rsock-annotations-4.3.1-SNAPSHOT.jar": "e4f83c9537deb5766fb81b66e7a565ceaae9d48513a1b17f90f13f7535adf47c",
+      "nrpc-common-1.0-SNAPSHOT.jar": "39df38c2c8c8c50853f8c9fe806ca0c6daa1abc6d4e164ce482f605696bd4486",
+      "reactive-streams-1.0.4.jar": "f75ca597789b3dac58f61857b9ac2e1034a68fa672db35055a8fb4509e325f28",
+      "reactor-core-3.7.8.jar": "445677d27a7b0ac3cd7cdc0822c42732ca504beeb1436b5d0943dfa1f2880aee",
+      "reactor-netty-core-1.2.8.jar": "108e2bd0db4f23da1d4ee8ec149e40bdef717b652c63540f2705843f66c99f66",
+      "reactor-netty-http-1.2.8.jar": "2e3306ef24ca39077971bafd2f21c1e890f8703f01e8d1741013642413530692",
+      "rsocket-core-1.1.5.jar": "41866f622cc960645739271781c65693711c8224b0f0e9af6e2ba2b85f8f76cc",
+      "rsocket-transport-netty-1.1.5.jar": "0f9d7ff91a361d545e91b3364309a8c8fbe14d6835e76b239671122b6a13c434",
+      "slf4j-api-2.0.17.jar": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832",
+      "snakeyaml-2.4.jar": "ef779af5d29a9dde8cc70ce0341f5c6f7735e23edff9685ceaa9d35359b7bb7f",
+      "spring-aop-6.2.9.jar": "d958824afee9f6cd48afa8228ea1c464c24c69f01041c70ef8940af5f6cde164",
+      "spring-beans-6.2.9.jar": "693fdfbd74ed0caddce2e7a644f175557ab4b97a040a884252bc23c5506485db",
+      "spring-boot-3.5.4.jar": "33055ea55f8f937aff1abffe17986b9a6ba3a0361cbca8fb0420c1415d713ad4",
+      "spring-boot-autoconfigure-3.5.4.jar": "8c04d947b8fe3a237b7e042c6f379c499138122d0dac4e855aba1128c234af72",
+      "spring-boot-starter-3.5.4.jar": "c54cf5c31cc5b60cbe5961a9689d964cf925912504ac3305f01746aee24b5b73",
+      "spring-boot-starter-json-3.5.4.jar": "a272604b2a6022a747ebb4faa46d1e9f0a1bd7a4335d0df762e46b05d89e872b",
+      "spring-boot-starter-logging-3.5.4.jar": "2646efc1976dc65b2a865c59fa73eabb38e7c5b7347f58e1f726e91f295711d7",
+      "spring-boot-starter-tomcat-3.5.4.jar": "5aafdcfd886dfb74ea5ee781652ffd20fd3149a3f18335424add1bc28f564eb1",
+      "spring-boot-starter-web-3.5.4.jar": "2b124abec26daf39654c09d406a5b9107d4c50af3083c0f78405e27601e81fb5",
+      "spring-context-6.2.9.jar": "5e73a1171084d81417a5e1ca1534c1525611f7324cb56e3bceac63564314b853",
+      "spring-core-6.2.9.jar": "9fa0622baf738c9b46f484cdde35c4a97a2a65b1da4426dad0d707d0a8aa3d90",
+      "spring-expression-6.2.9.jar": "1866ff07407fa213120813d00eaaee7213d03eeff2a50e7d075ada807b68583f",
+      "spring-jcl-6.2.9.jar": "88c58f734519df3d7d9e07733b91d839c43d459551923d93f4b7c92658b41498",
+      "spring-messaging-6.2.9.jar": "0c760855dfc7acccf1fc508657ed894b97ad5159bdab71f6335c58ee62b50194",
+      "spring-web-6.2.9.jar": "0121a2623f7740fd0d208342cf6f1207f2501b1915665a344a2c161bf5f2ef6b",
+      "spring-webmvc-6.2.9.jar": "8a4f5b214092eb929f36e06869a436f9f16a55fab470df6a7f38c4616b1bf0cc",
+      "tomcat-embed-core-10.1.43.jar": "bbe8f14a022845785630ecb74457f55d981811be8adfeaf66da28826d75454d7",
+      "tomcat-embed-el-10.1.43.jar": "150c72fc126d8eef31e0aec9994eed28501a6e4d75bf97554a97c16753093c9c",
+      "tomcat-embed-websocket-10.1.43.jar": "3a844e95ab2ad7f338e12b448e4d727db4dc57c5c1cb5f6248f4c75c08beb3b4"
+    },
+    "grpc": {
+      "HdrHistogram-2.2.2.jar": "22d1d4316c4ec13a68b559e98c8256d69071593731da96136640f864fa14fad8",
+      "animal-sniffer-annotations-1.23.jar": "9ffe526bf43a6348e9d8b33b9cd6f580a7f5eed0cf055913007eda263de974d0",
+      "annotations-4.1.1.4.jar": "ba734e1e84c09d615af6a09d33034b4f0442f8772dec120efb376d86a565ae15",
+      "benchmark-common-1.0-SNAPSHOT.jar": "8c99672270fc80095a05a6dac8883ecdce4f03557e2c1eea53c915137f11b824",
+      "checker-qual-3.33.0.jar": "e316255bbfcd9fe50d165314b85abb2b33cb2a66a93c491db648e498a82c2de1",
+      "commons-pool2-2.12.1.jar": "5273c8bc8c0dca2211175c0d27efbd7228efae99689aac001a8e1ef8e872e9ef",
+      "error_prone_annotations-2.20.0.jar": "a136d3dce67168d88751115fa223bec80eae6cc062aa2f8173e8344a98235ec4",
+      "failureaccess-1.0.1.jar": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26",
+      "grpc-api-1.58.0.jar": "d688d25f4f533979df2fcd0881e1e30c2928e5b654ff09bf1440923282b0d945",
+      "grpc-client-spring-boot-autoconfigure-2.15.0.RELEASE.jar": "cdc5a3cc89fe2d817577b6a376517b8bd973b45b56cc8b8f91ee2d228afbebc1",
+      "grpc-client-spring-boot-starter-2.15.0.RELEASE.jar": "1654feee8212ce36e3893ca2898cade62e868684aa477f4febedff866f816c2b",
+      "grpc-common-1.0-SNAPSHOT.jar": "d22efeebe3ef117a2f06dfe0a479414c2695532e143dd8c65a9739457e5a95b3",
+      "grpc-common-spring-boot-2.15.0.RELEASE.jar": "d1c0007b446a970bb9cba162f4639f7a36b8766ac6214a53751e2946c026524f",
+      "grpc-context-1.58.0.jar": "3a7626d13084958bcdeab59412e4ec873f07c8315ff2510d363856fac7fadc51",
+      "grpc-core-1.58.0.jar": "93c8880824ee124b91c31f0f1052f86372719d6ece6e4be1c591b7d6dc639f5f",
+      "grpc-inprocess-1.58.0.jar": "574864b84b212f211a45f67c3ca3ddfade655654fa76a17ab6a6f273b8800425",
+      "grpc-netty-shaded-1.58.0.jar": "12fc8479b8a43ef62955c452a4fda63c47c20d6d78fd990f9b3a6a7c09fc0977",
+      "grpc-protobuf-1.58.0.jar": "77f16774992d5802cfeef7a9d00b3a3f9a82d324ce1cab7f84c6f1a0df5a39c3",
+      "grpc-protobuf-lite-1.58.0.jar": "f5d2a3f601620db036f72d51bde4a19f939ac7618058e5743fb3599e778992e7",
+      "grpc-server-spring-boot-autoconfigure-2.15.0.RELEASE.jar": "9938febdcd55b77a69992909388c1a72ce5e8cdd01b91b94f11c1f474361c437",
+      "grpc-server-spring-boot-starter-2.15.0.RELEASE.jar": "e7a5917c5c60ce5cd94867cf62a2f5df6ace982242d984a8abbaaf4da64af4e2",
+      "grpc-services-1.58.0.jar": "5d8c55fa26f9175c0eac89c2afa9f50dd33d8f608851fed943e41d47a627b231",
+      "grpc-stub-1.58.0.jar": "1af7bbc56be7b1131c1322ba183126dd050306f91128193f4b9bd5ea71ac8c88",
+      "grpc-util-1.58.0.jar": "9e8999d98523fb975c7a316bd524671576c1c638b1b1fd357340bb90be14b5db",
+      "gson-2.13.1.jar": "94855942d4992f112946d3de1c334e709237b8126d8130bf07807c018a4a2120",
+      "guava-32.0.1-android.jar": "12429ff9ac33b7afd8b1a5071179757cf4d3c47f0f4099bc0384e644ecbf82dd",
+      "j2objc-annotations-2.8.jar": "f02a95fa1a5e95edb3ed859fd0fb7df709d121a35290eff8b74dce2ab7f4d6ed",
+      "jackson-annotations-2.19.2.jar": "e516743a316dcf83c572ffc9cb6e8c5e8c134880c8c5155b02f7b34e9c5dc3cf",
+      "jackson-core-2.19.2.jar": "aa77eaf29293a868c47372194f7c5287d77d9370b04ea25d3fffc1e4904b5880",
+      "jackson-databind-2.19.2.jar": "0a1bd4e9b0d670e632d40ee8c625ad376233502f03c2f5889baea95d025b47a7",
+      "jackson-datatype-jdk8-2.19.2.jar": "6055fef10756e8bd1b0e8807aa1d881338c63ca95d59271e1da4922b9a17581e",
+      "jackson-datatype-jsr310-2.19.2.jar": "9709f43e0fa5625633ee66db6c078fb1e8c7ca02092696ba95ea785dbf0fa6a1",
+      "jackson-module-parameter-names-2.19.2.jar": "5cafef98759b40a418631e91257930a5e30abc162d9a690c1e365dbbdacdfecb",
+      "jakarta.annotation-api-2.1.1.jar": "5f65fdaf424eee2b55e1d882ba9bb376be93fb09b37b808be6e22e8851c909fe",
+      "javax.annotation-api-1.3.2.jar": "e04ba5195bcd555dc95650f7cc614d151e4bcd52d29a10b8aa2197f3ab89ab9b",
+      "jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+      "jul-to-slf4j-2.0.17.jar": "a7afcd23b9cfd1475e55c94f943b808c5922035e7e2c2a5c65a487a4106bc538",
+      "kryo5-5.5.0.jar": "5dab506f91ab06adad1acb5fe904e587c2781593a7930f003e84f6597622f3b2",
+      "listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+      "log4j-api-2.24.3.jar": "5b4a0a0cd0e751ded431c162442bdbdd53328d1f8bb2bae5fc1bbeee0f66d80f",
+      "log4j-to-slf4j-2.24.3.jar": "c7f2b0c612a4eb05b1587d1c880eb4cf5f4f53850676a8ede8da2b8fabb4f73f",
+      "logback-classic-1.5.18.jar": "3e1533d0321f8815eef46750aee0111b41554f9a4644c3c4d2d404744b09f60f",
+      "logback-core-1.5.18.jar": "85139e7b57b464f8e5e36326dd81317648bed199ccc4f98cd42585f8d7571027",
+      "micrometer-commons-1.15.2.jar": "c20eb029b3e74fe261795467b420f20b2062a025dacd03d761156b9ea6d4a205",
+      "micrometer-observation-1.15.2.jar": "f8e847a10e5974b2c9ffd7169e967f41418c5fdfeaf30a97937b5d82a5d27ea6",
+      "netty-buffer-4.1.123.Final.jar": "b1d37c2b40d74552119313b1133bc18f79c3afb4913e0d5592795cd08190d396",
+      "netty-codec-4.1.123.Final.jar": "43b1376fd9c19a5c785d4a0bf2b9c0c944b731d4e172b497be3f9b8dec955971",
+      "netty-codec-dns-4.1.123.Final.jar": "6be28fa391ac2d818a156fd57be0c0bacfba8444812ff0e1b77cd9ab6f356042",
+      "netty-codec-http-4.1.123.Final.jar": "a7eeccb1b48a4ef9062f20c0d4f284ba4fec2d55823055278b387f53b9a5c7bc",
+      "netty-codec-http2-4.1.123.Final.jar": "b3cfec2c3942b20965176d6555742a0bea8cadc7c5ed79a2b587a0e1112d18f9",
+      "netty-codec-socks-4.1.123.Final.jar": "0e23d29bfc8e325c7897c1d759aa41fc14d0b0aec3c68503909772889c427792",
+      "netty-common-4.1.123.Final.jar": "0f8745b206c9ca9aa306baf175b3def26f31946b03c1a7b0dc84c4e32f8a0f22",
+      "netty-handler-4.1.123.Final.jar": "231e2a2a028aeb91e7a8c4ba3676ff6a3004a1e9a35bcacb394e86ec7f70f5dc",
+      "netty-handler-proxy-4.1.123.Final.jar": "54100da7052b4cb3f16c831ea2bdec41da463adf96e0d4494f6ec4006bc08154",
+      "netty-resolver-4.1.123.Final.jar": "fb1fc8f9be939bd551b7162714a7f5ac1e546939580c7c0a55496ae05630f01f",
+      "netty-resolver-dns-4.1.123.Final.jar": "bbceae6f4673cca42eab3509593271500b970565a2c8ca1a2bd1d171d0cda36e",
+      "netty-resolver-dns-classes-macos-4.1.123.Final.jar": "06731738b01f35e98f444bc916d921e54baaebeb48c94533455b41965268b39a",
+      "netty-resolver-dns-native-macos-4.1.123.Final-osx-x86_64.jar": "5381028c61acdb0024aef11f08a3370470671cd724ddaca774be6fde88ceb9ce",
+      "netty-transport-4.1.123.Final.jar": "100277fb20875943b33b85587fc018975992f87d707c1f9701fab4791903cdc3",
+      "netty-transport-classes-epoll-4.1.123.Final.jar": "3db30bbaba004f86221bb251168d9bbbd38eecefb42c7802b9cbca628331e156",
+      "netty-transport-native-epoll-4.1.123.Final-linux-x86_64.jar": "ebea67a93777fe8d4db4f5b23a1aa451aea1aad75a767a40a75306e32f67c9b9",
+      "netty-transport-native-unix-common-4.1.123.Final.jar": "009b20c26a522633ddc2078e0845f098770648ee9d4bd494beea9955b895856f",
+      "nimrod-ipc-rsock-4.3.1-SNAPSHOT.jar": "46ea4bafd2c93e615e52b4abbd295a9175c6b90f7518ee00156523ea9a848ad7",
+      "nimrod-ipc-rsock-annotations-4.3.1-SNAPSHOT.jar": "e4f83c9537deb5766fb81b66e7a565ceaae9d48513a1b17f90f13f7535adf47c",
+      "nrpc-common-1.0-SNAPSHOT.jar": "39df38c2c8c8c50853f8c9fe806ca0c6daa1abc6d4e164ce482f605696bd4486",
+      "perfmark-api-0.26.0.jar": "b7d23e93a34537ce332708269a0d1404788a5b5e1949e82f5535fce51b3ea95b",
+      "proto-google-common-protos-2.22.0.jar": "002eebc53d27e4fb2e8cf823ea1f3565b90c4b0b4380ff508bf61bd42f2be0d3",
+      "protobuf-java-3.25.3.jar": "e90d8ddb963b20a972a6a59b5093ade2b07cbe546cab3279aaf4383260385f58",
+      "protobuf-java-util-3.24.0.jar": "fade64f5f877a1fa6cc4fd308120d72ace7048a2c9bf740298f82f05b9f56843",
+      "reactive-streams-1.0.4.jar": "f75ca597789b3dac58f61857b9ac2e1034a68fa672db35055a8fb4509e325f28",
+      "reactor-core-3.7.8.jar": "445677d27a7b0ac3cd7cdc0822c42732ca504beeb1436b5d0943dfa1f2880aee",
+      "reactor-netty-core-1.2.8.jar": "108e2bd0db4f23da1d4ee8ec149e40bdef717b652c63540f2705843f66c99f66",
+      "reactor-netty-http-1.2.8.jar": "2e3306ef24ca39077971bafd2f21c1e890f8703f01e8d1741013642413530692",
+      "rsocket-core-1.1.5.jar": "41866f622cc960645739271781c65693711c8224b0f0e9af6e2ba2b85f8f76cc",
+      "rsocket-transport-netty-1.1.5.jar": "0f9d7ff91a361d545e91b3364309a8c8fbe14d6835e76b239671122b6a13c434",
+      "slf4j-api-2.0.17.jar": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832",
+      "snakeyaml-2.4.jar": "ef779af5d29a9dde8cc70ce0341f5c6f7735e23edff9685ceaa9d35359b7bb7f",
+      "spring-aop-6.2.9.jar": "d958824afee9f6cd48afa8228ea1c464c24c69f01041c70ef8940af5f6cde164",
+      "spring-beans-6.2.9.jar": "693fdfbd74ed0caddce2e7a644f175557ab4b97a040a884252bc23c5506485db",
+      "spring-boot-3.5.4.jar": "33055ea55f8f937aff1abffe17986b9a6ba3a0361cbca8fb0420c1415d713ad4",
+      "spring-boot-autoconfigure-3.5.4.jar": "8c04d947b8fe3a237b7e042c6f379c499138122d0dac4e855aba1128c234af72",
+      "spring-boot-starter-3.5.4.jar": "c54cf5c31cc5b60cbe5961a9689d964cf925912504ac3305f01746aee24b5b73",
+      "spring-boot-starter-json-3.5.4.jar": "a272604b2a6022a747ebb4faa46d1e9f0a1bd7a4335d0df762e46b05d89e872b",
+      "spring-boot-starter-logging-3.5.4.jar": "2646efc1976dc65b2a865c59fa73eabb38e7c5b7347f58e1f726e91f295711d7",
+      "spring-boot-starter-tomcat-3.5.4.jar": "5aafdcfd886dfb74ea5ee781652ffd20fd3149a3f18335424add1bc28f564eb1",
+      "spring-boot-starter-web-3.5.4.jar": "2b124abec26daf39654c09d406a5b9107d4c50af3083c0f78405e27601e81fb5",
+      "spring-context-6.2.9.jar": "5e73a1171084d81417a5e1ca1534c1525611f7324cb56e3bceac63564314b853",
+      "spring-core-6.2.9.jar": "9fa0622baf738c9b46f484cdde35c4a97a2a65b1da4426dad0d707d0a8aa3d90",
+      "spring-expression-6.2.9.jar": "1866ff07407fa213120813d00eaaee7213d03eeff2a50e7d075ada807b68583f",
+      "spring-jcl-6.2.9.jar": "88c58f734519df3d7d9e07733b91d839c43d459551923d93f4b7c92658b41498",
+      "spring-messaging-6.2.9.jar": "0c760855dfc7acccf1fc508657ed894b97ad5159bdab71f6335c58ee62b50194",
+      "spring-web-6.2.9.jar": "0121a2623f7740fd0d208342cf6f1207f2501b1915665a344a2c161bf5f2ef6b",
+      "spring-webmvc-6.2.9.jar": "8a4f5b214092eb929f36e06869a436f9f16a55fab470df6a7f38c4616b1bf0cc",
+      "tomcat-embed-core-10.1.43.jar": "bbe8f14a022845785630ecb74457f55d981811be8adfeaf66da28826d75454d7",
+      "tomcat-embed-el-10.1.43.jar": "150c72fc126d8eef31e0aec9994eed28501a6e4d75bf97554a97c16753093c9c",
+      "tomcat-embed-websocket-10.1.43.jar": "3a844e95ab2ad7f338e12b448e4d727db4dc57c5c1cb5f6248f4c75c08beb3b4"
+    },
+    "dubbo2": {
+      "HdrHistogram-2.2.2.jar": "22d1d4316c4ec13a68b559e98c8256d69071593731da96136640f864fa14fad8",
+      "asm-5.0.4.jar": "896618ed8ae62702521a78bc7be42b7c491a08e6920a15f89a3ecdec31e9a220",
+      "benchmark-common-1.0-SNAPSHOT.jar": "8c99672270fc80095a05a6dac8883ecdce4f03557e2c1eea53c915137f11b824",
+      "dubbo-2.7.23.jar": "f5ad20172a4aa1e960b8fb02be785c19538f41e0ddcaeb276cdf173d6cc44106",
+      "dubbo-common-1.0-SNAPSHOT.jar": "ef702c2a28930b55d72bb6acac60e68e7ce7e342e770c31160b55756c6bc59ea",
+      "error_prone_annotations-2.38.0.jar": "6661d5335090a5fc61dd869d2095bc6c1e2156e3aa47a6e4ababdf64c99a7889",
+      "fastjson-1.2.83.jar": "641a4d65ab32fbfdccd9c718e3f83ebc4caabdb5e4fe5b3d51527c5fe692631d",
+      "gson-2.13.1.jar": "94855942d4992f112946d3de1c334e709237b8126d8130bf07807c018a4a2120",
+      "jackson-annotations-2.19.2.jar": "e516743a316dcf83c572ffc9cb6e8c5e8c134880c8c5155b02f7b34e9c5dc3cf",
+      "jackson-core-2.19.2.jar": "aa77eaf29293a868c47372194f7c5287d77d9370b04ea25d3fffc1e4904b5880",
+      "jackson-databind-2.19.2.jar": "0a1bd4e9b0d670e632d40ee8c625ad376233502f03c2f5889baea95d025b47a7",
+      "jakarta.annotation-api-2.1.1.jar": "5f65fdaf424eee2b55e1d882ba9bb376be93fb09b37b808be6e22e8851c909fe",
+      "javassist-3.30.2-GA.jar": "eba37290994b5e4868f3af98ff113f6244a6b099385d9ad46881307d3cb01aaf",
+      "jul-to-slf4j-2.0.17.jar": "a7afcd23b9cfd1475e55c94f943b808c5922035e7e2c2a5c65a487a4106bc538",
+      "kryo-4.0.2.jar": "8cd8bcb6920b165ff21b82f7a44f2c7e87dcb24560e52b9dc7d085fba9cfcce5",
+      "kryo-serializers-0.42.jar": "de9157fdd82c91620b9be05019d4a667408a34d8575ae32e329720c547607686",
+      "log4j-api-2.24.3.jar": "5b4a0a0cd0e751ded431c162442bdbdd53328d1f8bb2bae5fc1bbeee0f66d80f",
+      "log4j-to-slf4j-2.24.3.jar": "c7f2b0c612a4eb05b1587d1c880eb4cf5f4f53850676a8ede8da2b8fabb4f73f",
+      "logback-classic-1.5.18.jar": "3e1533d0321f8815eef46750aee0111b41554f9a4644c3c4d2d404744b09f60f",
+      "logback-core-1.5.18.jar": "85139e7b57b464f8e5e36326dd81317648bed199ccc4f98cd42585f8d7571027",
+      "micrometer-commons-1.15.2.jar": "c20eb029b3e74fe261795467b420f20b2062a025dacd03d761156b9ea6d4a205",
+      "micrometer-observation-1.15.2.jar": "f8e847a10e5974b2c9ffd7169e967f41418c5fdfeaf30a97937b5d82a5d27ea6",
+      "minlog-1.3.0.jar": "f7b399d3a5478a4f3e0d98bd1c9f47766119c66414bc33aa0f6cde0066f24cc2",
+      "netty-all-4.1.123.Final.jar": "e64e4e6c989c6af320a508edc13e96d1d0df3a4b3f4fcabcfc87e2a56eed2de1",
+      "netty-buffer-4.1.123.Final.jar": "b1d37c2b40d74552119313b1133bc18f79c3afb4913e0d5592795cd08190d396",
+      "netty-codec-4.1.123.Final.jar": "43b1376fd9c19a5c785d4a0bf2b9c0c944b731d4e172b497be3f9b8dec955971",
+      "netty-codec-dns-4.1.123.Final.jar": "6be28fa391ac2d818a156fd57be0c0bacfba8444812ff0e1b77cd9ab6f356042",
+      "netty-codec-haproxy-4.1.123.Final.jar": "b9be875af344d91098bd4689dc2ebeffc7a5e2cffc4986b026c1aae43bfe2490",
+      "netty-codec-http-4.1.123.Final.jar": "a7eeccb1b48a4ef9062f20c0d4f284ba4fec2d55823055278b387f53b9a5c7bc",
+      "netty-codec-http2-4.1.123.Final.jar": "b3cfec2c3942b20965176d6555742a0bea8cadc7c5ed79a2b587a0e1112d18f9",
+      "netty-codec-memcache-4.1.123.Final.jar": "ba0bc61930dca15e083fd91acc967ffc9dbc1d695a04ce9c6aefa5f582d258b2",
+      "netty-codec-mqtt-4.1.123.Final.jar": "e7a8401c9c027eaecda359e986cf42235db9df17d6314eba116cf124f3897570",
+      "netty-codec-redis-4.1.123.Final.jar": "bbb038b3cb53043ea219d8ce0b5ba928381c5aa49db50640face800dcf3150d5",
+      "netty-codec-smtp-4.1.123.Final.jar": "71445ca571525df48f73b97754a91bb99de11af03665f9bbaf49ff21cb00662d",
+      "netty-codec-socks-4.1.123.Final.jar": "0e23d29bfc8e325c7897c1d759aa41fc14d0b0aec3c68503909772889c427792",
+      "netty-codec-stomp-4.1.123.Final.jar": "5a366fcd984e9869ead2dd1e20c91ddb5791965635a2f4ce1f27c9286dc82369",
+      "netty-codec-xml-4.1.123.Final.jar": "77aac974a319fc820d233827dc003ec1e351acd60b8ea0ee4da30c123516795e",
+      "netty-common-4.1.123.Final.jar": "0f8745b206c9ca9aa306baf175b3def26f31946b03c1a7b0dc84c4e32f8a0f22",
+      "netty-handler-4.1.123.Final.jar": "231e2a2a028aeb91e7a8c4ba3676ff6a3004a1e9a35bcacb394e86ec7f70f5dc",
+      "netty-handler-proxy-4.1.123.Final.jar": "54100da7052b4cb3f16c831ea2bdec41da463adf96e0d4494f6ec4006bc08154",
+      "netty-handler-ssl-ocsp-4.1.123.Final.jar": "b61812d9443035d1a23f69f2842f4bed5fdaf3e3e29bcff2692be3c9489b7e33",
+      "netty-resolver-4.1.123.Final.jar": "fb1fc8f9be939bd551b7162714a7f5ac1e546939580c7c0a55496ae05630f01f",
+      "netty-resolver-dns-4.1.123.Final.jar": "bbceae6f4673cca42eab3509593271500b970565a2c8ca1a2bd1d171d0cda36e",
+      "netty-resolver-dns-classes-macos-4.1.123.Final.jar": "06731738b01f35e98f444bc916d921e54baaebeb48c94533455b41965268b39a",
+      "netty-resolver-dns-native-macos-4.1.123.Final-osx-aarch_64.jar": "fcdaa380c1ae38f37a4d37912e867e8192adde0432f3899a3ea266c7688137c3",
+      "netty-resolver-dns-native-macos-4.1.123.Final-osx-x86_64.jar": "5381028c61acdb0024aef11f08a3370470671cd724ddaca774be6fde88ceb9ce",
+      "netty-transport-4.1.123.Final.jar": "100277fb20875943b33b85587fc018975992f87d707c1f9701fab4791903cdc3",
+      "netty-transport-classes-epoll-4.1.123.Final.jar": "3db30bbaba004f86221bb251168d9bbbd38eecefb42c7802b9cbca628331e156",
+      "netty-transport-classes-kqueue-4.1.123.Final.jar": "cbb89a86bb6b2368b69a33f9461a1b62dc884946cad43891fc84b1719ca0888a",
+      "netty-transport-native-epoll-4.1.123.Final-linux-aarch_64.jar": "0d94e01cbec830e38bc876fcfd415f53777ff721ff113b33fc024dcedf81d94e",
+      "netty-transport-native-epoll-4.1.123.Final-linux-riscv64.jar": "80eb1aef101b9875b5e010a086877dcc9be86a9eaeef43720d53c5982f101e8a",
+      "netty-transport-native-epoll-4.1.123.Final-linux-x86_64.jar": "ebea67a93777fe8d4db4f5b23a1aa451aea1aad75a767a40a75306e32f67c9b9",
+      "netty-transport-native-kqueue-4.1.123.Final-osx-aarch_64.jar": "535a6f252748b30a75130050865b76ae2ae491b31fe6efb739c513b03ea54cd5",
+      "netty-transport-native-kqueue-4.1.123.Final-osx-x86_64.jar": "cfb30d05fce20909eaad2951dd07049485e47c7dacd900babbee224c53308e9b",
+      "netty-transport-native-unix-common-4.1.123.Final.jar": "009b20c26a522633ddc2078e0845f098770648ee9d4bd494beea9955b895856f",
+      "netty-transport-rxtx-4.1.123.Final.jar": "ac84ea15885eafba4da95d3bdd9b7cae8efa3116b2d1c2d811e1395328bd87eb",
+      "netty-transport-sctp-4.1.123.Final.jar": "2b1e3b96851425e6555e8385bce279987ee7e7e0f7d7f8c4624a17d48396e58d",
+      "netty-transport-udt-4.1.123.Final.jar": "55991963bef32c7c65f1b30553b3533321b2ef487424a4e7f8b2027978750494",
+      "objenesis-2.5.1.jar": "b043f03e466752f7f03e2326a3b13a49b7c649f8f2a2dc87715827e24f73d9c6",
+      "reflectasm-1.11.3.jar": "a61b1919fc26262d1c95b0167f87e6985cdd90be3dab1a14479fb351d08c63d4",
+      "slf4j-api-2.0.17.jar": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832",
+      "snakeyaml-2.4.jar": "ef779af5d29a9dde8cc70ce0341f5c6f7735e23edff9685ceaa9d35359b7bb7f",
+      "spring-aop-6.2.9.jar": "d958824afee9f6cd48afa8228ea1c464c24c69f01041c70ef8940af5f6cde164",
+      "spring-beans-6.2.9.jar": "693fdfbd74ed0caddce2e7a644f175557ab4b97a040a884252bc23c5506485db",
+      "spring-boot-3.5.4.jar": "33055ea55f8f937aff1abffe17986b9a6ba3a0361cbca8fb0420c1415d713ad4",
+      "spring-boot-autoconfigure-3.5.4.jar": "8c04d947b8fe3a237b7e042c6f379c499138122d0dac4e855aba1128c234af72",
+      "spring-boot-starter-3.5.4.jar": "c54cf5c31cc5b60cbe5961a9689d964cf925912504ac3305f01746aee24b5b73",
+      "spring-boot-starter-logging-3.5.4.jar": "2646efc1976dc65b2a865c59fa73eabb38e7c5b7347f58e1f726e91f295711d7",
+      "spring-context-6.2.9.jar": "5e73a1171084d81417a5e1ca1534c1525611f7324cb56e3bceac63564314b853",
+      "spring-context-support-1.0.11.jar": "227719b2063c0b93064ec34358d4a4e3b59d63c619ba9eb679095d287133ea92",
+      "spring-core-6.2.9.jar": "9fa0622baf738c9b46f484cdde35c4a97a2a65b1da4426dad0d707d0a8aa3d90",
+      "spring-expression-6.2.9.jar": "1866ff07407fa213120813d00eaaee7213d03eeff2a50e7d075ada807b68583f",
+      "spring-jcl-6.2.9.jar": "88c58f734519df3d7d9e07733b91d839c43d459551923d93f4b7c92658b41498"
+    }
+  },
+  "counts": [
+    {
+      "library": "nimrod",
+      "phase": "readiness",
+      "attempted": 60,
+      "completed": 60,
+      "drainCompleted": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "nimrod",
+      "phase": "warmup",
+      "attempted": 52973331,
+      "completed": 52972511,
+      "drainCompleted": 820,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "nimrod",
+      "phase": "measurement",
+      "attempted": 244313674,
+      "completed": 244312857,
+      "drainCompleted": 817,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "grpc",
+      "phase": "readiness",
+      "attempted": 60,
+      "completed": 60,
+      "drainCompleted": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "grpc",
+      "phase": "warmup",
+      "attempted": 32581947,
+      "completed": 32581128,
+      "drainCompleted": 819,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "grpc",
+      "phase": "measurement",
+      "attempted": 148866363,
+      "completed": 148865543,
+      "drainCompleted": 820,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "dubbo2",
+      "phase": "readiness",
+      "attempted": 60,
+      "completed": 60,
+      "drainCompleted": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "dubbo2",
+      "phase": "warmup",
+      "attempted": 57527916,
+      "completed": 57527096,
+      "drainCompleted": 820,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    },
+    {
+      "library": "dubbo2",
+      "phase": "measurement",
+      "attempted": 235715567,
+      "completed": 235714747,
+      "drainCompleted": 820,
+      "errors": 0,
+      "timeouts": 0,
+      "invalidResponses": 0,
+      "unresolved": 0
+    }
+  ],
+  "observedSockets": [
+    {
+      "library": "nimrod",
+      "concurrency": 1,
+      "counts": [
+        1
+      ]
+    },
+    {
+      "library": "nimrod",
+      "concurrency": 8,
+      "counts": [
+        8
+      ]
+    },
+    {
+      "library": "nimrod",
+      "concurrency": 32,
+      "counts": [
+        32
+      ]
+    },
+    {
+      "library": "grpc",
+      "concurrency": 1,
+      "counts": [
+        1
+      ]
+    },
+    {
+      "library": "grpc",
+      "concurrency": 8,
+      "counts": [
+        1
+      ]
+    },
+    {
+      "library": "grpc",
+      "concurrency": 32,
+      "counts": [
+        1
+      ]
+    },
+    {
+      "library": "dubbo2",
+      "concurrency": 1,
+      "counts": [
+        1
+      ]
+    },
+    {
+      "library": "dubbo2",
+      "concurrency": 8,
+      "counts": [
+        1
+      ]
+    },
+    {
+      "library": "dubbo2",
+      "concurrency": 32,
+      "counts": [
+        1
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "library": "nimrod",
+      "payloadBytes": 128,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 13703.191666666668,
+          "p50Millis": 0.069311,
+          "p95Millis": 0.091647,
+          "p99Millis": 0.122047,
+          "clientCpuCores": 0.5364861538423291,
+          "serverCpuCores": 0.49926140248964374,
+          "totalCpuCores": 1.035747556331973
+        },
+        {
+          "repetition": 2,
+          "throughput": 13080.308333333332,
+          "p50Millis": 0.075455,
+          "p95Millis": 0.095871,
+          "p99Millis": 0.121215,
+          "clientCpuCores": 0.5455423812611198,
+          "serverCpuCores": 0.49637517494265737,
+          "totalCpuCores": 1.041917556203777
+        },
+        {
+          "repetition": 3,
+          "throughput": 13437.058333333332,
+          "p50Millis": 0.072191,
+          "p95Millis": 0.092351,
+          "p99Millis": 0.114047,
+          "clientCpuCores": 0.5366713018142459,
+          "serverCpuCores": 0.49368978873333336,
+          "totalCpuCores": 1.0303610905475793
+        },
+        {
+          "repetition": 4,
+          "throughput": 13408.375,
+          "p50Millis": 0.071615,
+          "p95Millis": 0.094079,
+          "p99Millis": 0.118463,
+          "clientCpuCores": 0.5369174659281262,
+          "serverCpuCores": 0.49649443340392546,
+          "totalCpuCores": 1.0334118993320516
+        },
+        {
+          "repetition": 5,
+          "throughput": 13156.558333333332,
+          "p50Millis": 0.072319,
+          "p95Millis": 0.098303,
+          "p99Millis": 0.126271,
+          "clientCpuCores": 0.5363237229207597,
+          "serverCpuCores": 0.5016391903427406,
+          "totalCpuCores": 1.0379629132635002
+        }
+      ],
+      "medians": {
+        "throughput": 13408.375,
+        "p50Millis": 0.072191,
+        "p95Millis": 0.094079,
+        "p99Millis": 0.121215,
+        "clientCpuCores": 0.5366713018142459,
+        "serverCpuCores": 0.49649443340392546,
+        "totalCpuCores": 1.035747556331973
+      },
+      "throughputMin": 13080.308333333332,
+      "throughputMax": 13703.191666666668
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 128,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 9277.716666666667,
+          "p50Millis": 0.102591,
+          "p95Millis": 0.131583,
+          "p99Millis": 0.171135,
+          "clientCpuCores": 0.5603979037848607,
+          "serverCpuCores": 0.7552215215628743,
+          "totalCpuCores": 1.315619425347735
+        },
+        {
+          "repetition": 2,
+          "throughput": 9013.991666666667,
+          "p50Millis": 0.111679,
+          "p95Millis": 0.131007,
+          "p99Millis": 0.153087,
+          "clientCpuCores": 0.5712038336341757,
+          "serverCpuCores": 0.7444286027645187,
+          "totalCpuCores": 1.3156324363986944
+        },
+        {
+          "repetition": 3,
+          "throughput": 9125.616666666667,
+          "p50Millis": 0.109567,
+          "p95Millis": 0.130239,
+          "p99Millis": 0.153471,
+          "clientCpuCores": 0.5642286578401726,
+          "serverCpuCores": 0.7549036103571579,
+          "totalCpuCores": 1.3191322681973305
+        },
+        {
+          "repetition": 4,
+          "throughput": 9171.266666666666,
+          "p50Millis": 0.109759,
+          "p95Millis": 0.129215,
+          "p99Millis": 0.153087,
+          "clientCpuCores": 0.5663241973593519,
+          "serverCpuCores": 0.7351947083812709,
+          "totalCpuCores": 1.3015189057406227
+        },
+        {
+          "repetition": 5,
+          "throughput": 9260.85,
+          "p50Millis": 0.106303,
+          "p95Millis": 0.128959,
+          "p99Millis": 0.154367,
+          "clientCpuCores": 0.560252685147325,
+          "serverCpuCores": 0.740361078775,
+          "totalCpuCores": 1.300613763922325
+        }
+      ],
+      "medians": {
+        "throughput": 9171.266666666666,
+        "p50Millis": 0.109567,
+        "p95Millis": 0.130239,
+        "p99Millis": 0.153471,
+        "clientCpuCores": 0.5642286578401726,
+        "serverCpuCores": 0.7444286027645187,
+        "totalCpuCores": 1.315619425347735
+      },
+      "throughputMin": 9013.991666666667,
+      "throughputMax": 9277.716666666667
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 128,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 10966.891666666666,
+          "p50Millis": 0.086335,
+          "p95Millis": 0.113535,
+          "p99Millis": 0.157183,
+          "clientCpuCores": 0.5467704258640792,
+          "serverCpuCores": 0.5210338930289088,
+          "totalCpuCores": 1.067804318892988
+        },
+        {
+          "repetition": 2,
+          "throughput": 11405.816666666668,
+          "p50Millis": 0.084863,
+          "p95Millis": 0.103423,
+          "p99Millis": 0.131455,
+          "clientCpuCores": 0.5411807827083334,
+          "serverCpuCores": 0.5243679334531937,
+          "totalCpuCores": 1.0655487161615271
+        },
+        {
+          "repetition": 3,
+          "throughput": 11356.958333333334,
+          "p50Millis": 0.083711,
+          "p95Millis": 0.106431,
+          "p99Millis": 0.136831,
+          "clientCpuCores": 0.5378366733118022,
+          "serverCpuCores": 0.5239159041037297,
+          "totalCpuCores": 1.0617525774155319
+        },
+        {
+          "repetition": 4,
+          "throughput": 11134.033333333333,
+          "p50Millis": 0.085951,
+          "p95Millis": 0.105407,
+          "p99Millis": 0.135807,
+          "clientCpuCores": 0.5361546199542652,
+          "serverCpuCores": 0.5279454788423152,
+          "totalCpuCores": 1.0641000987965805
+        },
+        {
+          "repetition": 5,
+          "throughput": 11690.716666666667,
+          "p50Millis": 0.081727,
+          "p95Millis": 0.103679,
+          "p99Millis": 0.131967,
+          "clientCpuCores": 0.5385119296240973,
+          "serverCpuCores": 0.5223269911156583,
+          "totalCpuCores": 1.0608389207397555
+        }
+      ],
+      "medians": {
+        "throughput": 11356.958333333334,
+        "p50Millis": 0.084863,
+        "p95Millis": 0.105407,
+        "p99Millis": 0.135807,
+        "clientCpuCores": 0.5385119296240973,
+        "serverCpuCores": 0.5239159041037297,
+        "totalCpuCores": 1.0641000987965805
+      },
+      "throughputMin": 10966.891666666666,
+      "throughputMax": 11690.716666666667
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 1024,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 11436.008333333333,
+          "p50Millis": 0.083711,
+          "p95Millis": 0.121279,
+          "p99Millis": 0.175231,
+          "clientCpuCores": 0.5400548401000099,
+          "serverCpuCores": 0.49292982440771144,
+          "totalCpuCores": 1.0329846645077214
+        },
+        {
+          "repetition": 2,
+          "throughput": 12880.808333333332,
+          "p50Millis": 0.076351,
+          "p95Millis": 0.098815,
+          "p99Millis": 0.123519,
+          "clientCpuCores": 0.5307790602226721,
+          "serverCpuCores": 0.4998977463899184,
+          "totalCpuCores": 1.0306768066125904
+        },
+        {
+          "repetition": 3,
+          "throughput": 12981.891666666666,
+          "p50Millis": 0.074431,
+          "p95Millis": 0.097599,
+          "p99Millis": 0.123007,
+          "clientCpuCores": 0.5286245622072357,
+          "serverCpuCores": 0.4957217862931206,
+          "totalCpuCores": 1.0243463485003563
+        },
+        {
+          "repetition": 4,
+          "throughput": 12888.208333333334,
+          "p50Millis": 0.074047,
+          "p95Millis": 0.099263,
+          "p99Millis": 0.128767,
+          "clientCpuCores": 0.5282809438110403,
+          "serverCpuCores": 0.4994655170446607,
+          "totalCpuCores": 1.027746460855701
+        },
+        {
+          "repetition": 5,
+          "throughput": 12977.016666666666,
+          "p50Millis": 0.072319,
+          "p95Millis": 0.099135,
+          "p99Millis": 0.131967,
+          "clientCpuCores": 0.536976645855227,
+          "serverCpuCores": 0.49403560107531597,
+          "totalCpuCores": 1.031012246930543
+        }
+      ],
+      "medians": {
+        "throughput": 12888.208333333334,
+        "p50Millis": 0.074431,
+        "p95Millis": 0.099135,
+        "p99Millis": 0.128767,
+        "clientCpuCores": 0.5307790602226721,
+        "serverCpuCores": 0.4957217862931206,
+        "totalCpuCores": 1.0306768066125904
+      },
+      "throughputMin": 11436.008333333333,
+      "throughputMax": 12981.891666666666
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 1024,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 8291.1,
+          "p50Millis": 0.118591,
+          "p95Millis": 0.148223,
+          "p99Millis": 0.193279,
+          "clientCpuCores": 0.5652816533549259,
+          "serverCpuCores": 0.7398801636365132,
+          "totalCpuCores": 1.305161816991439
+        },
+        {
+          "repetition": 2,
+          "throughput": 9228.341666666667,
+          "p50Millis": 0.107903,
+          "p95Millis": 0.128895,
+          "p99Millis": 0.152319,
+          "clientCpuCores": 0.5708621061147187,
+          "serverCpuCores": 0.7400297074135512,
+          "totalCpuCores": 1.31089181352827
+        },
+        {
+          "repetition": 3,
+          "throughput": 9150.333333333334,
+          "p50Millis": 0.109055,
+          "p95Millis": 0.129087,
+          "p99Millis": 0.152191,
+          "clientCpuCores": 0.5646372579973935,
+          "serverCpuCores": 0.7314778737333333,
+          "totalCpuCores": 1.2961151317307267
+        },
+        {
+          "repetition": 4,
+          "throughput": 9081.375,
+          "p50Millis": 0.109759,
+          "p95Millis": 0.130239,
+          "p99Millis": 0.155775,
+          "clientCpuCores": 0.5626791051522096,
+          "serverCpuCores": 0.7370476775166667,
+          "totalCpuCores": 1.2997267826688763
+        },
+        {
+          "repetition": 5,
+          "throughput": 9295.491666666667,
+          "p50Millis": 0.104767,
+          "p95Millis": 0.129215,
+          "p99Millis": 0.157183,
+          "clientCpuCores": 0.56747564920253,
+          "serverCpuCores": 0.7370614990818363,
+          "totalCpuCores": 1.3045371482843664
+        }
+      ],
+      "medians": {
+        "throughput": 9150.333333333334,
+        "p50Millis": 0.109055,
+        "p95Millis": 0.129215,
+        "p99Millis": 0.155775,
+        "clientCpuCores": 0.5652816533549259,
+        "serverCpuCores": 0.7370614990818363,
+        "totalCpuCores": 1.3045371482843664
+      },
+      "throughputMin": 8291.1,
+      "throughputMax": 9295.491666666667
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 1024,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 10265.666666666666,
+          "p50Millis": 0.096639,
+          "p95Millis": 0.125631,
+          "p99Millis": 0.184959,
+          "clientCpuCores": null,
+          "serverCpuCores": 0.5202740325884552,
+          "totalCpuCores": null
+        },
+        {
+          "repetition": 2,
+          "throughput": 11321.483333333334,
+          "p50Millis": 0.085183,
+          "p95Millis": 0.105407,
+          "p99Millis": 0.135679,
+          "clientCpuCores": 0.5453549772008803,
+          "serverCpuCores": 0.517563029664837,
+          "totalCpuCores": 1.0629180068657174
+        },
+        {
+          "repetition": 3,
+          "throughput": 11186.191666666668,
+          "p50Millis": 0.085567,
+          "p95Millis": 0.108031,
+          "p99Millis": 0.138495,
+          "clientCpuCores": 0.5447154494824603,
+          "serverCpuCores": 0.5194372847480769,
+          "totalCpuCores": 1.0641527342305372
+        },
+        {
+          "repetition": 4,
+          "throughput": 11057.858333333334,
+          "p50Millis": 0.085503,
+          "p95Millis": 0.108479,
+          "p99Millis": 0.139903,
+          "clientCpuCores": 0.5386748934494293,
+          "serverCpuCores": 0.5196242966693753,
+          "totalCpuCores": 1.0582991901188046
+        },
+        {
+          "repetition": 5,
+          "throughput": 11438.116666666667,
+          "p50Millis": 0.082879,
+          "p95Millis": 0.104511,
+          "p99Millis": 0.133375,
+          "clientCpuCores": 0.533508291753709,
+          "serverCpuCores": 0.5223742299295409,
+          "totalCpuCores": 1.05588252168325
+        }
+      ],
+      "medians": {
+        "throughput": 11186.191666666668,
+        "p50Millis": 0.085503,
+        "p95Millis": 0.108031,
+        "p99Millis": 0.138495,
+        "clientCpuCores": null,
+        "serverCpuCores": 0.5196242966693753,
+        "totalCpuCores": null
+      },
+      "throughputMin": 10265.666666666666,
+      "throughputMax": 11438.116666666667
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 10240,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 11880.383333333333,
+          "p50Millis": 0.080575,
+          "p95Millis": 0.106815,
+          "p99Millis": 0.136831,
+          "clientCpuCores": 0.532209563628818,
+          "serverCpuCores": 0.5015013116433898,
+          "totalCpuCores": 1.0337108752722077
+        },
+        {
+          "repetition": 2,
+          "throughput": 11746.083333333334,
+          "p50Millis": 0.081791,
+          "p95Millis": 0.107199,
+          "p99Millis": 0.134783,
+          "clientCpuCores": 0.5320615535425101,
+          "serverCpuCores": 0.5019176553318379,
+          "totalCpuCores": 1.033979208874348
+        },
+        {
+          "repetition": 3,
+          "throughput": 11840.116666666667,
+          "p50Millis": 0.080703,
+          "p95Millis": 0.107519,
+          "p99Millis": 0.132991,
+          "clientCpuCores": 0.5327598576347305,
+          "serverCpuCores": 0.49913198666558445,
+          "totalCpuCores": 1.0318918443003149
+        },
+        {
+          "repetition": 4,
+          "throughput": 11921.175,
+          "p50Millis": 0.079935,
+          "p95Millis": 0.107967,
+          "p99Millis": 0.134143,
+          "clientCpuCores": 0.53740754470349,
+          "serverCpuCores": 0.494247109746507,
+          "totalCpuCores": 1.031654654449997
+        },
+        {
+          "repetition": 5,
+          "throughput": 11882.9,
+          "p50Millis": 0.080511,
+          "p95Millis": 0.106879,
+          "p99Millis": 0.136191,
+          "clientCpuCores": 0.5351303901438014,
+          "serverCpuCores": 0.5003610800828344,
+          "totalCpuCores": 1.0354914702266358
+        }
+      ],
+      "medians": {
+        "throughput": 11880.383333333333,
+        "p50Millis": 0.080575,
+        "p95Millis": 0.107199,
+        "p99Millis": 0.134783,
+        "clientCpuCores": 0.5327598576347305,
+        "serverCpuCores": 0.5003610800828344,
+        "totalCpuCores": 1.0337108752722077
+      },
+      "throughputMin": 11746.083333333334,
+      "throughputMax": 11921.175
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 10240,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 8266.741666666667,
+          "p50Millis": 0.121855,
+          "p95Millis": 0.142335,
+          "p99Millis": 0.166655,
+          "clientCpuCores": 0.5781892286691542,
+          "serverCpuCores": 0.7413828214221556,
+          "totalCpuCores": 1.3195720500913097
+        },
+        {
+          "repetition": 2,
+          "throughput": 8424.125,
+          "p50Millis": 0.117823,
+          "p95Millis": 0.141311,
+          "p99Millis": 0.166655,
+          "clientCpuCores": 0.5873619002742012,
+          "serverCpuCores": 0.7439993742699434,
+          "totalCpuCores": 1.3313612745441445
+        },
+        {
+          "repetition": 3,
+          "throughput": 8330.108333333334,
+          "p50Millis": 0.120319,
+          "p95Millis": 0.141439,
+          "p99Millis": 0.166399,
+          "clientCpuCores": 0.5775467844594594,
+          "serverCpuCores": 0.7291740207195608,
+          "totalCpuCores": 1.3067208051790202
+        },
+        {
+          "repetition": 4,
+          "throughput": 8469.008333333333,
+          "p50Millis": 0.116543,
+          "p95Millis": 0.140415,
+          "p99Millis": 0.169599,
+          "clientCpuCores": 0.5861161966743248,
+          "serverCpuCores": 0.7276089577166667,
+          "totalCpuCores": 1.3137251543909914
+        },
+        {
+          "repetition": 5,
+          "throughput": 8493.708333333334,
+          "p50Millis": 0.113471,
+          "p95Millis": 0.141567,
+          "p99Millis": 0.173439,
+          "clientCpuCores": 0.5790837007326347,
+          "serverCpuCores": 0.725981949700499,
+          "totalCpuCores": 1.3050656504331337
+        }
+      ],
+      "medians": {
+        "throughput": 8424.125,
+        "p50Millis": 0.117823,
+        "p95Millis": 0.141439,
+        "p99Millis": 0.166655,
+        "clientCpuCores": 0.5790837007326347,
+        "serverCpuCores": 0.7291740207195608,
+        "totalCpuCores": 1.3137251543909914
+      },
+      "throughputMin": 8266.741666666667,
+      "throughputMax": 8493.708333333334
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 10240,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 10125.641666666666,
+          "p50Millis": 0.096063,
+          "p95Millis": 0.116031,
+          "p99Millis": 0.144127,
+          "clientCpuCores": 0.5401690454526885,
+          "serverCpuCores": 0.5195580165912509,
+          "totalCpuCores": 1.0597270620439394
+        },
+        {
+          "repetition": 2,
+          "throughput": 10274.266666666666,
+          "p50Millis": 0.094207,
+          "p95Millis": 0.115007,
+          "p99Millis": 0.141567,
+          "clientCpuCores": 0.5396962547337277,
+          "serverCpuCores": 0.5211566660518961,
+          "totalCpuCores": 1.0608529207856239
+        },
+        {
+          "repetition": 3,
+          "throughput": 10193.25,
+          "p50Millis": 0.094719,
+          "p95Millis": 0.118143,
+          "p99Millis": 0.148351,
+          "clientCpuCores": 0.5399999192804577,
+          "serverCpuCores": 0.5203758443382804,
+          "totalCpuCores": 1.060375763618738
+        },
+        {
+          "repetition": 4,
+          "throughput": 10219.441666666668,
+          "p50Millis": 0.093183,
+          "p95Millis": 0.115647,
+          "p99Millis": 0.144895,
+          "clientCpuCores": 0.5386204136769005,
+          "serverCpuCores": 0.5199604431450598,
+          "totalCpuCores": 1.0585808568219603
+        },
+        {
+          "repetition": 5,
+          "throughput": 10346.658333333333,
+          "p50Millis": 0.091967,
+          "p95Millis": 0.116671,
+          "p99Millis": 0.148095,
+          "clientCpuCores": 0.5397719600574712,
+          "serverCpuCores": 0.5198646394587654,
+          "totalCpuCores": 1.0596365995162365
+        }
+      ],
+      "medians": {
+        "throughput": 10219.441666666668,
+        "p50Millis": 0.094207,
+        "p95Millis": 0.116031,
+        "p99Millis": 0.144895,
+        "clientCpuCores": 0.5397719600574712,
+        "serverCpuCores": 0.5199604431450598,
+        "totalCpuCores": 1.0597270620439394
+      },
+      "throughputMin": 10125.641666666666,
+      "throughputMax": 10346.658333333333
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 102400,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 4842.825,
+          "p50Millis": 0.209279,
+          "p95Millis": 0.244863,
+          "p99Millis": 0.285695,
+          "clientCpuCores": 0.5636175957230738,
+          "serverCpuCores": 0.557156366111424,
+          "totalCpuCores": 1.1207739618344978
+        },
+        {
+          "repetition": 2,
+          "throughput": 4818.083333333333,
+          "p50Millis": 0.210303,
+          "p95Millis": 0.246911,
+          "p99Millis": 0.288767,
+          "clientCpuCores": 0.5613938556715379,
+          "serverCpuCores": 0.5629679040666666,
+          "totalCpuCores": 1.1243617597382045
+        },
+        {
+          "repetition": 3,
+          "throughput": 4829.733333333334,
+          "p50Millis": 0.209407,
+          "p95Millis": 0.246143,
+          "p99Millis": 0.289535,
+          "clientCpuCores": 0.5648004117976809,
+          "serverCpuCores": 0.5618913160898203,
+          "totalCpuCores": 1.1266917278875013
+        },
+        {
+          "repetition": 4,
+          "throughput": 4921.116666666667,
+          "p50Millis": 0.205823,
+          "p95Millis": 0.243327,
+          "p99Millis": 0.288767,
+          "clientCpuCores": 0.5688547708510093,
+          "serverCpuCores": 0.5596248356262713,
+          "totalCpuCores": 1.1284796064772806
+        },
+        {
+          "repetition": 5,
+          "throughput": 4925.408333333334,
+          "p50Millis": 0.205695,
+          "p95Millis": 0.242687,
+          "p99Millis": 0.287743,
+          "clientCpuCores": 0.5735268445833334,
+          "serverCpuCores": 0.5606454785698001,
+          "totalCpuCores": 1.1341723231531335
+        }
+      ],
+      "medians": {
+        "throughput": 4842.825,
+        "p50Millis": 0.209279,
+        "p95Millis": 0.244863,
+        "p99Millis": 0.288767,
+        "clientCpuCores": 0.5648004117976809,
+        "serverCpuCores": 0.5606454785698001,
+        "totalCpuCores": 1.1266917278875013
+      },
+      "throughputMin": 4818.083333333333,
+      "throughputMax": 4925.408333333334
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 102400,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 4155.416666666667,
+          "p50Millis": 0.241023,
+          "p95Millis": 0.279039,
+          "p99Millis": 0.313599,
+          "clientCpuCores": 0.7440877326885537,
+          "serverCpuCores": 0.7256325963493679,
+          "totalCpuCores": 1.4697203290379215
+        },
+        {
+          "repetition": 2,
+          "throughput": 4178.283333333334,
+          "p50Millis": 0.240383,
+          "p95Millis": 0.279295,
+          "p99Millis": 0.318207,
+          "clientCpuCores": 0.7485693407396005,
+          "serverCpuCores": 0.7362910669962122,
+          "totalCpuCores": 1.4848604077358125
+        },
+        {
+          "repetition": 3,
+          "throughput": 4130.525,
+          "p50Millis": 0.242943,
+          "p95Millis": 0.280063,
+          "p99Millis": 0.317695,
+          "clientCpuCores": 0.7402587612472378,
+          "serverCpuCores": 0.7269010506334249,
+          "totalCpuCores": 1.4671598118806628
+        },
+        {
+          "repetition": 4,
+          "throughput": 4147.458333333333,
+          "p50Millis": 0.242175,
+          "p95Millis": 0.281087,
+          "p99Millis": 0.318975,
+          "clientCpuCores": 0.7402991630544993,
+          "serverCpuCores": 0.7300460203260146,
+          "totalCpuCores": 1.470345183380514
+        },
+        {
+          "repetition": 5,
+          "throughput": 4188.366666666667,
+          "p50Millis": 0.239615,
+          "p95Millis": 0.281087,
+          "p99Millis": 0.325887,
+          "clientCpuCores": 0.7456756419443094,
+          "serverCpuCores": 0.7469754386767132,
+          "totalCpuCores": 1.4926510806210227
+        }
+      ],
+      "medians": {
+        "throughput": 4155.416666666667,
+        "p50Millis": 0.241023,
+        "p95Millis": 0.280063,
+        "p99Millis": 0.318207,
+        "clientCpuCores": 0.7440877326885537,
+        "serverCpuCores": 0.7300460203260146,
+        "totalCpuCores": 1.470345183380514
+      },
+      "throughputMin": 4130.525,
+      "throughputMax": 4188.366666666667
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 102400,
+      "concurrency": 1,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 5171.158333333334,
+          "p50Millis": 0.197503,
+          "p95Millis": 0.224383,
+          "p99Millis": 0.259967,
+          "clientCpuCores": 0.574927392716493,
+          "serverCpuCores": 0.5420999468183633,
+          "totalCpuCores": 1.1170273395348562
+        },
+        {
+          "repetition": 2,
+          "throughput": 5253.716666666666,
+          "p50Millis": 0.193151,
+          "p95Millis": 0.223743,
+          "p99Millis": 0.262015,
+          "clientCpuCores": 0.5641732261904763,
+          "serverCpuCores": 0.5489411125086074,
+          "totalCpuCores": 1.1131143386990838
+        },
+        {
+          "repetition": 3,
+          "throughput": 5225.983333333334,
+          "p50Millis": 0.194559,
+          "p95Millis": 0.223487,
+          "p99Millis": 0.262911,
+          "clientCpuCores": 0.5704286882018943,
+          "serverCpuCores": 0.5420683356207958,
+          "totalCpuCores": 1.1124970238226901
+        },
+        {
+          "repetition": 4,
+          "throughput": 5289.35,
+          "p50Millis": 0.189695,
+          "p95Millis": 0.221823,
+          "p99Millis": 0.263167,
+          "clientCpuCores": 0.5710444883192369,
+          "serverCpuCores": 0.546112722225549,
+          "totalCpuCores": 1.1171572105447858
+        },
+        {
+          "repetition": 5,
+          "throughput": 5278.925,
+          "p50Millis": 0.188799,
+          "p95Millis": 0.222207,
+          "p99Millis": 0.261503,
+          "clientCpuCores": 0.568259155691057,
+          "serverCpuCores": 0.5471204939294451,
+          "totalCpuCores": 1.1153796496205022
+        }
+      ],
+      "medians": {
+        "throughput": 5253.716666666666,
+        "p50Millis": 0.193151,
+        "p95Millis": 0.223487,
+        "p99Millis": 0.262015,
+        "clientCpuCores": 0.5704286882018943,
+        "serverCpuCores": 0.546112722225549,
+        "totalCpuCores": 1.1153796496205022
+      },
+      "throughputMin": 5171.158333333334,
+      "throughputMax": 5289.35
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 128,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 50210.5,
+          "p50Millis": 0.155903,
+          "p95Millis": 0.198783,
+          "p99Millis": 0.220671,
+          "clientCpuCores": 4.268774711846207,
+          "serverCpuCores": 3.1451800239841985,
+          "totalCpuCores": 7.413954735830406
+        },
+        {
+          "repetition": 2,
+          "throughput": 44801.683333333334,
+          "p50Millis": 0.175103,
+          "p95Millis": 0.220671,
+          "p99Millis": 0.244095,
+          "clientCpuCores": 4.303003163234612,
+          "serverCpuCores": 3.1330250355166664,
+          "totalCpuCores": 7.436028198751279
+        },
+        {
+          "repetition": 3,
+          "throughput": 45425.2,
+          "p50Millis": 0.172671,
+          "p95Millis": 0.217983,
+          "p99Millis": 0.241407,
+          "clientCpuCores": 4.333087051158964,
+          "serverCpuCores": 3.0818777808383233,
+          "totalCpuCores": 7.414964831997287
+        },
+        {
+          "repetition": 4,
+          "throughput": 44511.191666666666,
+          "p50Millis": 0.176127,
+          "p95Millis": 0.223359,
+          "p99Millis": 0.247679,
+          "clientCpuCores": 4.341599573152588,
+          "serverCpuCores": 3.1027603575666665,
+          "totalCpuCores": 7.444359930719255
+        },
+        {
+          "repetition": 5,
+          "throughput": 46538.95,
+          "p50Millis": 0.168447,
+          "p95Millis": 0.213247,
+          "p99Millis": 0.236287,
+          "clientCpuCores": 4.321517969586775,
+          "serverCpuCores": 3.0871989132122963,
+          "totalCpuCores": 7.408716882799071
+        }
+      ],
+      "medians": {
+        "throughput": 45425.2,
+        "p50Millis": 0.172671,
+        "p95Millis": 0.217983,
+        "p99Millis": 0.241407,
+        "clientCpuCores": 4.321517969586775,
+        "serverCpuCores": 3.1027603575666665,
+        "totalCpuCores": 7.414964831997287
+      },
+      "throughputMin": 44511.191666666666,
+      "throughputMax": 50210.5
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 128,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 33366.7,
+          "p50Millis": 0.236287,
+          "p95Millis": 0.298239,
+          "p99Millis": 0.333567,
+          "clientCpuCores": null,
+          "serverCpuCores": 2.2176541054205585,
+          "totalCpuCores": null
+        },
+        {
+          "repetition": 2,
+          "throughput": 32869.01666666667,
+          "p50Millis": 0.241151,
+          "p95Millis": 0.297471,
+          "p99Millis": 0.329215,
+          "clientCpuCores": 1.690691173753089,
+          "serverCpuCores": 2.208812465,
+          "totalCpuCores": 3.899503638753089
+        },
+        {
+          "repetition": 3,
+          "throughput": 33667.6,
+          "p50Millis": 0.235775,
+          "p95Millis": 0.289791,
+          "p99Millis": 0.319743,
+          "clientCpuCores": 1.6919872584405062,
+          "serverCpuCores": 2.212487044940252,
+          "totalCpuCores": 3.9044743033807583
+        },
+        {
+          "repetition": 4,
+          "throughput": 33355.65,
+          "p50Millis": 0.237823,
+          "p95Millis": 0.292095,
+          "p99Millis": 0.322559,
+          "clientCpuCores": 1.6688660276898473,
+          "serverCpuCores": 2.1878665911808883,
+          "totalCpuCores": 3.8567326188707356
+        },
+        {
+          "repetition": 5,
+          "throughput": 33782.775,
+          "p50Millis": 0.234623,
+          "p95Millis": 0.289279,
+          "p99Millis": 0.320255,
+          "clientCpuCores": 1.666106806032672,
+          "serverCpuCores": 2.199771545812026,
+          "totalCpuCores": 3.8658783518446977
+        }
+      ],
+      "medians": {
+        "throughput": 33366.7,
+        "p50Millis": 0.236287,
+        "p95Millis": 0.292095,
+        "p99Millis": 0.322559,
+        "clientCpuCores": null,
+        "serverCpuCores": 2.208812465,
+        "totalCpuCores": null
+      },
+      "throughputMin": 32869.01666666667,
+      "throughputMax": 33782.775
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 128,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 48213.308333333334,
+          "p50Millis": 0.164223,
+          "p95Millis": 0.212991,
+          "p99Millis": 0.239359,
+          "clientCpuCores": 1.8608585274848486,
+          "serverCpuCores": 1.7530270552166667,
+          "totalCpuCores": 3.6138855827015153
+        },
+        {
+          "repetition": 2,
+          "throughput": 49209.725,
+          "p50Millis": 0.162303,
+          "p95Millis": 0.205183,
+          "p99Millis": 0.226815,
+          "clientCpuCores": 1.8570668829914172,
+          "serverCpuCores": 1.7962351224751165,
+          "totalCpuCores": 3.653302005466534
+        },
+        {
+          "repetition": 3,
+          "throughput": 49410.23333333333,
+          "p50Millis": 0.161279,
+          "p95Millis": 0.204415,
+          "p99Millis": 0.226303,
+          "clientCpuCores": 1.8691570642663158,
+          "serverCpuCores": 1.7584267767871211,
+          "totalCpuCores": 3.627583841053437
+        },
+        {
+          "repetition": 4,
+          "throughput": 50437.666666666664,
+          "p50Millis": 0.158335,
+          "p95Millis": 0.199807,
+          "p99Millis": 0.220415,
+          "clientCpuCores": 1.8725241975260758,
+          "serverCpuCores": 1.777872512675,
+          "totalCpuCores": 3.6503967102010755
+        },
+        {
+          "repetition": 5,
+          "throughput": 50554.433333333334,
+          "p50Millis": 0.157951,
+          "p95Millis": 0.199295,
+          "p99Millis": 0.220415,
+          "clientCpuCores": 1.9059427507038025,
+          "serverCpuCores": 1.760916189194084,
+          "totalCpuCores": 3.6668589398978866
+        }
+      ],
+      "medians": {
+        "throughput": 49410.23333333333,
+        "p50Millis": 0.161279,
+        "p95Millis": 0.204415,
+        "p99Millis": 0.226303,
+        "clientCpuCores": 1.8691570642663158,
+        "serverCpuCores": 1.760916189194084,
+        "totalCpuCores": 3.6503967102010755
+      },
+      "throughputMin": 48213.308333333334,
+      "throughputMax": 50554.433333333334
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 1024,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 40559.075,
+          "p50Millis": 0.193279,
+          "p95Millis": 0.246655,
+          "p99Millis": 0.273151,
+          "clientCpuCores": 4.303728888949341,
+          "serverCpuCores": 3.162895291825,
+          "totalCpuCores": 7.466624180774341
+        },
+        {
+          "repetition": 2,
+          "throughput": 44350.38333333333,
+          "p50Millis": 0.176767,
+          "p95Millis": 0.222719,
+          "p99Millis": 0.246655,
+          "clientCpuCores": 4.305434398706814,
+          "serverCpuCores": 3.1323993674792083,
+          "totalCpuCores": 7.4378337661860225
+        },
+        {
+          "repetition": 3,
+          "throughput": 44223.50833333333,
+          "p50Millis": 0.177151,
+          "p95Millis": 0.224383,
+          "p99Millis": 0.249087,
+          "clientCpuCores": 4.289945772149378,
+          "serverCpuCores": 3.1280880195116216,
+          "totalCpuCores": 7.418033791660999
+        },
+        {
+          "repetition": 4,
+          "throughput": 44639.88333333333,
+          "p50Millis": 0.175487,
+          "p95Millis": 0.223103,
+          "p99Millis": 0.247807,
+          "clientCpuCores": 4.274236268591856,
+          "serverCpuCores": 3.1463897185760477,
+          "totalCpuCores": 7.420625987167903
+        },
+        {
+          "repetition": 5,
+          "throughput": 45924.15833333333,
+          "p50Millis": 0.170623,
+          "p95Millis": 0.215423,
+          "p99Millis": 0.238463,
+          "clientCpuCores": 4.322440335224345,
+          "serverCpuCores": 3.099336637892349,
+          "totalCpuCores": 7.421776973116693
+        }
+      ],
+      "medians": {
+        "throughput": 44350.38333333333,
+        "p50Millis": 0.176767,
+        "p95Millis": 0.223103,
+        "p99Millis": 0.247807,
+        "clientCpuCores": 4.303728888949341,
+        "serverCpuCores": 3.1323993674792083,
+        "totalCpuCores": 7.421776973116693
+      },
+      "throughputMin": 40559.075,
+      "throughputMax": 45924.15833333333
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 1024,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 30640.716666666667,
+          "p50Millis": 0.256767,
+          "p95Millis": 0.327167,
+          "p99Millis": 0.378623,
+          "clientCpuCores": 1.6974060401862463,
+          "serverCpuCores": 2.2382836056711253,
+          "totalCpuCores": 3.9356896458573716
+        },
+        {
+          "repetition": 2,
+          "throughput": 32296.266666666666,
+          "p50Millis": 0.245375,
+          "p95Millis": 0.302847,
+          "p99Millis": 0.334335,
+          "clientCpuCores": 1.7120344908991556,
+          "serverCpuCores": 2.2212195183424983,
+          "totalCpuCores": 3.933254009241654
+        },
+        {
+          "repetition": 3,
+          "throughput": 32847.98333333333,
+          "p50Millis": 0.241279,
+          "p95Millis": 0.296959,
+          "p99Millis": 0.327423,
+          "clientCpuCores": 1.6907238311429813,
+          "serverCpuCores": 2.219671231218781,
+          "totalCpuCores": 3.9103950623617623
+        },
+        {
+          "repetition": 4,
+          "throughput": 32782.65,
+          "p50Millis": 0.241663,
+          "p95Millis": 0.296959,
+          "p99Millis": 0.327167,
+          "clientCpuCores": 1.6757332128851266,
+          "serverCpuCores": 2.1962493303323685,
+          "totalCpuCores": 3.871982543217495
+        },
+        {
+          "repetition": 5,
+          "throughput": 33297.03333333333,
+          "p50Millis": 0.237823,
+          "p95Millis": 0.293887,
+          "p99Millis": 0.324863,
+          "clientCpuCores": 1.6915651317368963,
+          "serverCpuCores": 2.219424843668548,
+          "totalCpuCores": 3.9109899754054442
+        }
+      ],
+      "medians": {
+        "throughput": 32782.65,
+        "p50Millis": 0.241663,
+        "p95Millis": 0.296959,
+        "p99Millis": 0.327423,
+        "clientCpuCores": 1.6915651317368963,
+        "serverCpuCores": 2.219671231218781,
+        "totalCpuCores": 3.9109899754054442
+      },
+      "throughputMin": 30640.716666666667,
+      "throughputMax": 33297.03333333333
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 1024,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 47302.65,
+          "p50Millis": 0.167167,
+          "p95Millis": 0.217855,
+          "p99Millis": 0.258303,
+          "clientCpuCores": 1.8583158797499146,
+          "serverCpuCores": 1.7932905822077678,
+          "totalCpuCores": 3.6516064619576825
+        },
+        {
+          "repetition": 2,
+          "throughput": 49070.26666666667,
+          "p50Millis": 0.162687,
+          "p95Millis": 0.204927,
+          "p99Millis": 0.226687,
+          "clientCpuCores": 1.8878467406010102,
+          "serverCpuCores": 1.7754377476912175,
+          "totalCpuCores": 3.663284488292228
+        },
+        {
+          "repetition": 3,
+          "throughput": 47891.1,
+          "p50Millis": 0.165759,
+          "p95Millis": 0.212351,
+          "p99Millis": 0.235519,
+          "clientCpuCores": 1.8608064790344794,
+          "serverCpuCores": 1.7718075484159175,
+          "totalCpuCores": 3.632614027450397
+        },
+        {
+          "repetition": 4,
+          "throughput": 49041.416666666664,
+          "p50Millis": 0.162815,
+          "p95Millis": 0.205183,
+          "p99Millis": 0.227199,
+          "clientCpuCores": 1.8744264369706258,
+          "serverCpuCores": 1.7695846923633234,
+          "totalCpuCores": 3.644011129333949
+        },
+        {
+          "repetition": 5,
+          "throughput": 50464.71666666667,
+          "p50Millis": 0.157695,
+          "p95Millis": 0.200063,
+          "p99Millis": 0.221311,
+          "clientCpuCores": 1.866252356005699,
+          "serverCpuCores": 1.7787443923403192,
+          "totalCpuCores": 3.644996748346018
+        }
+      ],
+      "medians": {
+        "throughput": 49041.416666666664,
+        "p50Millis": 0.162815,
+        "p95Millis": 0.205183,
+        "p99Millis": 0.227199,
+        "clientCpuCores": 1.866252356005699,
+        "serverCpuCores": 1.7754377476912175,
+        "totalCpuCores": 3.644996748346018
+      },
+      "throughputMin": 47302.65,
+      "throughputMax": 50464.71666666667
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 10240,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 37670.3,
+          "p50Millis": 0.206591,
+          "p95Millis": 0.260991,
+          "p99Millis": 0.290303,
+          "clientCpuCores": 4.2443002925223094,
+          "serverCpuCores": 3.215386030185296,
+          "totalCpuCores": 7.459686322707606
+        },
+        {
+          "repetition": 2,
+          "throughput": 38779.875,
+          "p50Millis": 0.200703,
+          "p95Millis": 0.252031,
+          "p99Millis": 0.279551,
+          "clientCpuCores": 4.2966549847854685,
+          "serverCpuCores": 3.1970458400532746,
+          "totalCpuCores": 7.493700824838744
+        },
+        {
+          "repetition": 3,
+          "throughput": 39245.01666666667,
+          "p50Millis": 0.198271,
+          "p95Millis": 0.248959,
+          "p99Millis": 0.276223,
+          "clientCpuCores": 4.262944463707597,
+          "serverCpuCores": 3.1842933449184962,
+          "totalCpuCores": 7.4472378086260935
+        },
+        {
+          "repetition": 4,
+          "throughput": 39600.291666666664,
+          "p50Millis": 0.196479,
+          "p95Millis": 0.247295,
+          "p99Millis": 0.274943,
+          "clientCpuCores": 4.28074409455022,
+          "serverCpuCores": 3.1876823703909425,
+          "totalCpuCores": 7.468426464941163
+        },
+        {
+          "repetition": 5,
+          "throughput": 40507.38333333333,
+          "p50Millis": 0.192127,
+          "p95Millis": 0.240511,
+          "p99Millis": 0.267007,
+          "clientCpuCores": 4.286133844793037,
+          "serverCpuCores": 3.1717981941439124,
+          "totalCpuCores": 7.457932038936949
+        }
+      ],
+      "medians": {
+        "throughput": 39245.01666666667,
+        "p50Millis": 0.198271,
+        "p95Millis": 0.248959,
+        "p99Millis": 0.276223,
+        "clientCpuCores": 4.28074409455022,
+        "serverCpuCores": 3.1876823703909425,
+        "totalCpuCores": 7.459686322707606
+      },
+      "throughputMin": 37670.3,
+      "throughputMax": 40507.38333333333
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 10240,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 27195.55,
+          "p50Millis": 0.290303,
+          "p95Millis": 0.358143,
+          "p99Millis": 0.395007,
+          "clientCpuCores": 1.7463369766041947,
+          "serverCpuCores": 2.225211832261905,
+          "totalCpuCores": 3.9715488088660997
+        },
+        {
+          "repetition": 2,
+          "throughput": 27393.858333333334,
+          "p50Millis": 0.288255,
+          "p95Millis": 0.357119,
+          "p99Millis": 0.394495,
+          "clientCpuCores": 1.7682550114360693,
+          "serverCpuCores": 2.225634719634531,
+          "totalCpuCores": 3.9938897310706003
+        },
+        {
+          "repetition": 3,
+          "throughput": 27377.041666666668,
+          "p50Millis": 0.288511,
+          "p95Millis": 0.355071,
+          "p99Millis": 0.391679,
+          "clientCpuCores": 1.7461331944957388,
+          "serverCpuCores": 2.210731661135989,
+          "totalCpuCores": 3.9568648556317276
+        },
+        {
+          "repetition": 4,
+          "throughput": 27956.75,
+          "p50Millis": 0.282367,
+          "p95Millis": 0.348927,
+          "p99Millis": 0.385535,
+          "clientCpuCores": 1.784879826738722,
+          "serverCpuCores": 2.247396802388889,
+          "totalCpuCores": 4.032276629127611
+        },
+        {
+          "repetition": 5,
+          "throughput": 27840.441666666666,
+          "p50Millis": 0.283647,
+          "p95Millis": 0.350719,
+          "p99Millis": 0.387327,
+          "clientCpuCores": 1.763870402062204,
+          "serverCpuCores": 2.2122558379655244,
+          "totalCpuCores": 3.976126240027728
+        }
+      ],
+      "medians": {
+        "throughput": 27393.858333333334,
+        "p50Millis": 0.288255,
+        "p95Millis": 0.355071,
+        "p99Millis": 0.391679,
+        "clientCpuCores": 1.763870402062204,
+        "serverCpuCores": 2.225211832261905,
+        "totalCpuCores": 3.976126240027728
+      },
+      "throughputMin": 27195.55,
+      "throughputMax": 27956.75
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 10240,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 40339.25833333333,
+          "p50Millis": 0.196735,
+          "p95Millis": 0.249855,
+          "p99Millis": 0.279039,
+          "clientCpuCores": 1.8526390544974023,
+          "serverCpuCores": 1.755278552478513,
+          "totalCpuCores": 3.6079176069759153
+        },
+        {
+          "repetition": 2,
+          "throughput": 40769.441666666666,
+          "p50Millis": 0.194431,
+          "p95Millis": 0.246399,
+          "p99Millis": 0.274687,
+          "clientCpuCores": 1.8578158976985397,
+          "serverCpuCores": 1.748577927284365,
+          "totalCpuCores": 3.606393824982905
+        },
+        {
+          "repetition": 3,
+          "throughput": 39897.625,
+          "p50Millis": 0.198399,
+          "p95Millis": 0.252799,
+          "p99Millis": 0.282367,
+          "clientCpuCores": 1.8411586974624599,
+          "serverCpuCores": 1.730574925517782,
+          "totalCpuCores": 3.5717336229802417
+        },
+        {
+          "repetition": 4,
+          "throughput": 41338.183333333334,
+          "p50Millis": 0.191359,
+          "p95Millis": 0.244351,
+          "p99Millis": 0.272383,
+          "clientCpuCores": 1.8530645017689331,
+          "serverCpuCores": 1.772363674882592,
+          "totalCpuCores": 3.625428176651525
+        },
+        {
+          "repetition": 5,
+          "throughput": 41608.11666666667,
+          "p50Millis": 0.190975,
+          "p95Millis": 0.241279,
+          "p99Millis": 0.269311,
+          "clientCpuCores": 1.8779338305145858,
+          "serverCpuCores": 1.744959853501996,
+          "totalCpuCores": 3.6228936840165815
+        }
+      ],
+      "medians": {
+        "throughput": 40769.441666666666,
+        "p50Millis": 0.194431,
+        "p95Millis": 0.246399,
+        "p99Millis": 0.274687,
+        "clientCpuCores": 1.8530645017689331,
+        "serverCpuCores": 1.748577927284365,
+        "totalCpuCores": 3.6079176069759153
+      },
+      "throughputMin": 39897.625,
+      "throughputMax": 41608.11666666667
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 102400,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 11925.683333333332,
+          "p50Millis": 0.640511,
+          "p95Millis": 0.803839,
+          "p99Millis": 1.032703,
+          "clientCpuCores": 4.1431143771444985,
+          "serverCpuCores": 3.6837178808949034,
+          "totalCpuCores": 7.826832258039402
+        },
+        {
+          "repetition": 2,
+          "throughput": 12219.541666666666,
+          "p50Millis": 0.625663,
+          "p95Millis": 0.781823,
+          "p99Millis": 1.027071,
+          "clientCpuCores": 4.15567281067953,
+          "serverCpuCores": 3.6954703629780936,
+          "totalCpuCores": 7.851143173657624
+        },
+        {
+          "repetition": 3,
+          "throughput": 12217.033333333333,
+          "p50Millis": 0.625663,
+          "p95Millis": 0.782335,
+          "p99Millis": 1.015295,
+          "clientCpuCores": 4.151375099871079,
+          "serverCpuCores": 3.68474426390005,
+          "totalCpuCores": 7.836119363771129
+        },
+        {
+          "repetition": 4,
+          "throughput": 12309.658333333333,
+          "p50Millis": 0.621055,
+          "p95Millis": 0.778239,
+          "p99Millis": 1.007615,
+          "clientCpuCores": 4.142337192036714,
+          "serverCpuCores": 3.725046132656085,
+          "totalCpuCores": 7.867383324692799
+        },
+        {
+          "repetition": 5,
+          "throughput": 12549.466666666667,
+          "p50Millis": 0.609279,
+          "p95Millis": 0.761855,
+          "p99Millis": 0.994815,
+          "clientCpuCores": 4.149300962467291,
+          "serverCpuCores": 3.7146635872193117,
+          "totalCpuCores": 7.863964549686603
+        }
+      ],
+      "medians": {
+        "throughput": 12219.541666666666,
+        "p50Millis": 0.625663,
+        "p95Millis": 0.781823,
+        "p99Millis": 1.015295,
+        "clientCpuCores": 4.149300962467291,
+        "serverCpuCores": 3.6954703629780936,
+        "totalCpuCores": 7.851143173657624
+      },
+      "throughputMin": 11925.683333333332,
+      "throughputMax": 12549.466666666667
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 102400,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 9165.366666666667,
+          "p50Millis": 0.857087,
+          "p95Millis": 1.072127,
+          "p99Millis": 1.308671,
+          "clientCpuCores": 2.0187840568887863,
+          "serverCpuCores": 2.172557163735931,
+          "totalCpuCores": 4.191341220624717
+        },
+        {
+          "repetition": 2,
+          "throughput": 9107.641666666666,
+          "p50Millis": 0.861183,
+          "p95Millis": 1.087487,
+          "p99Millis": 1.328127,
+          "clientCpuCores": 2.007544477825891,
+          "serverCpuCores": 2.1539777152566364,
+          "totalCpuCores": 4.1615221930825275
+        },
+        {
+          "repetition": 3,
+          "throughput": 9299.733333333334,
+          "p50Millis": 0.843775,
+          "p95Millis": 1.058815,
+          "p99Millis": 1.288191,
+          "clientCpuCores": 2.0242217761320713,
+          "serverCpuCores": 2.1593309026228105,
+          "totalCpuCores": 4.183552678754882
+        },
+        {
+          "repetition": 4,
+          "throughput": 9416.708333333334,
+          "p50Millis": 0.833535,
+          "p95Millis": 1.046527,
+          "p99Millis": 1.277951,
+          "clientCpuCores": 2.042617049698111,
+          "serverCpuCores": 2.1880194927738925,
+          "totalCpuCores": 4.230636542472004
+        },
+        {
+          "repetition": 5,
+          "throughput": 9290.766666666666,
+          "p50Millis": 0.844799,
+          "p95Millis": 1.060863,
+          "p99Millis": 1.297407,
+          "clientCpuCores": 2.014919085178571,
+          "serverCpuCores": 2.152174448489338,
+          "totalCpuCores": 4.167093533667909
+        }
+      ],
+      "medians": {
+        "throughput": 9290.766666666666,
+        "p50Millis": 0.844799,
+        "p95Millis": 1.060863,
+        "p99Millis": 1.297407,
+        "clientCpuCores": 2.0187840568887863,
+        "serverCpuCores": 2.1593309026228105,
+        "totalCpuCores": 4.183552678754882
+      },
+      "throughputMin": 9107.641666666666,
+      "throughputMax": 9416.708333333334
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 102400,
+      "concurrency": 8,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 12575.391666666666,
+          "p50Millis": 0.600063,
+          "p95Millis": 0.864255,
+          "p99Millis": 0.970751,
+          "clientCpuCores": 1.5336815750341408,
+          "serverCpuCores": 1.428424190657139,
+          "totalCpuCores": 2.96210576569128
+        },
+        {
+          "repetition": 2,
+          "throughput": 12620.058333333332,
+          "p50Millis": 0.589823,
+          "p95Millis": 0.863231,
+          "p99Millis": 0.961023,
+          "clientCpuCores": 1.513275337126949,
+          "serverCpuCores": 1.418239142850632,
+          "totalCpuCores": 2.931514479977581
+        },
+        {
+          "repetition": 3,
+          "throughput": 12290.283333333333,
+          "p50Millis": 0.608767,
+          "p95Millis": 0.888831,
+          "p99Millis": 0.995327,
+          "clientCpuCores": 1.5092202640075898,
+          "serverCpuCores": 1.4072719885709912,
+          "totalCpuCores": 2.916492252578581
+        },
+        {
+          "repetition": 4,
+          "throughput": 12865.575,
+          "p50Millis": 0.582143,
+          "p95Millis": 0.846847,
+          "p99Millis": 0.952319,
+          "clientCpuCores": 1.5193783479871765,
+          "serverCpuCores": 1.4198557370395708,
+          "totalCpuCores": 2.9392340850267473
+        },
+        {
+          "repetition": 5,
+          "throughput": 12665.408333333333,
+          "p50Millis": 0.587263,
+          "p95Millis": 0.859647,
+          "p99Millis": 0.958463,
+          "clientCpuCores": 1.514586134645714,
+          "serverCpuCores": 1.4157754612268028,
+          "totalCpuCores": 2.9303615958725167
+        }
+      ],
+      "medians": {
+        "throughput": 12620.058333333332,
+        "p50Millis": 0.589823,
+        "p95Millis": 0.863231,
+        "p99Millis": 0.961023,
+        "clientCpuCores": 1.514586134645714,
+        "serverCpuCores": 1.418239142850632,
+        "totalCpuCores": 2.931514479977581
+      },
+      "throughputMin": 12290.283333333333,
+      "throughputMax": 12865.575
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 128,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 74147.95833333333,
+          "p50Millis": 0.390911,
+          "p95Millis": 0.707071,
+          "p99Millis": 0.945151,
+          "clientCpuCores": 8.186024604337435,
+          "serverCpuCores": 6.415100214533967,
+          "totalCpuCores": 14.601124818871401
+        },
+        {
+          "repetition": 2,
+          "throughput": 74963.90833333334,
+          "p50Millis": 0.381951,
+          "p95Millis": 0.703487,
+          "p99Millis": 0.957951,
+          "clientCpuCores": 8.113582110244847,
+          "serverCpuCores": 6.5698826559450945,
+          "totalCpuCores": 14.683464766189942
+        },
+        {
+          "repetition": 3,
+          "throughput": 76449.25,
+          "p50Millis": 0.383743,
+          "p95Millis": 0.677887,
+          "p99Millis": 0.875519,
+          "clientCpuCores": 8.213088586053733,
+          "serverCpuCores": 6.497395660199634,
+          "totalCpuCores": 14.710484246253365
+        },
+        {
+          "repetition": 4,
+          "throughput": 78500.48333333334,
+          "p50Millis": 0.375039,
+          "p95Millis": 0.656895,
+          "p99Millis": 0.812031,
+          "clientCpuCores": 8.211320874060679,
+          "serverCpuCores": 6.487959065921875,
+          "totalCpuCores": 14.699279939982553
+        },
+        {
+          "repetition": 5,
+          "throughput": 76599.55833333333,
+          "p50Millis": 0.368895,
+          "p95Millis": 0.699391,
+          "p99Millis": 0.951807,
+          "clientCpuCores": 8.122994798280443,
+          "serverCpuCores": 6.526312483476367,
+          "totalCpuCores": 14.64930728175681
+        }
+      ],
+      "medians": {
+        "throughput": 76449.25,
+        "p50Millis": 0.381951,
+        "p95Millis": 0.699391,
+        "p99Millis": 0.945151,
+        "clientCpuCores": 8.186024604337435,
+        "serverCpuCores": 6.497395660199634,
+        "totalCpuCores": 14.683464766189942
+      },
+      "throughputMin": 74147.95833333333,
+      "throughputMax": 78500.48333333334
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 128,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 35061.24166666667,
+          "p50Millis": 0.898047,
+          "p95Millis": 1.107967,
+          "p99Millis": 1.372159,
+          "clientCpuCores": 1.5062273369655441,
+          "serverCpuCores": 2.100366273487558,
+          "totalCpuCores": 3.6065936104531024
+        },
+        {
+          "repetition": 2,
+          "throughput": 37247.958333333336,
+          "p50Millis": 0.855551,
+          "p95Millis": 0.993791,
+          "p99Millis": 1.045503,
+          "clientCpuCores": 1.4953695442415218,
+          "serverCpuCores": 2.059889733953643,
+          "totalCpuCores": 3.5552592781951646
+        },
+        {
+          "repetition": 3,
+          "throughput": 37674.73333333333,
+          "p50Millis": 0.845823,
+          "p95Millis": 0.982015,
+          "p99Millis": 1.030655,
+          "clientCpuCores": 1.469170177441301,
+          "serverCpuCores": 2.027018751609381,
+          "totalCpuCores": 3.496188929050682
+        },
+        {
+          "repetition": 4,
+          "throughput": 38134.808333333334,
+          "p50Millis": 0.835583,
+          "p95Millis": 0.970751,
+          "p99Millis": 1.021439,
+          "clientCpuCores": 1.4972344095301227,
+          "serverCpuCores": 2.0615751719613824,
+          "totalCpuCores": 3.558809581491505
+        },
+        {
+          "repetition": 5,
+          "throughput": 38612.48333333333,
+          "p50Millis": 0.825343,
+          "p95Millis": 0.959999,
+          "p99Millis": 1.011711,
+          "clientCpuCores": 1.4935283828994268,
+          "serverCpuCores": 2.083628989724551,
+          "totalCpuCores": 3.5771573726239776
+        }
+      ],
+      "medians": {
+        "throughput": 37674.73333333333,
+        "p50Millis": 0.845823,
+        "p95Millis": 0.982015,
+        "p99Millis": 1.030655,
+        "clientCpuCores": 1.4953695442415218,
+        "serverCpuCores": 2.0615751719613824,
+        "totalCpuCores": 3.558809581491505
+      },
+      "throughputMin": 35061.24166666667,
+      "throughputMax": 38612.48333333333
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 128,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 63969.40833333333,
+          "p50Millis": 0.496639,
+          "p95Millis": 0.651263,
+          "p99Millis": 0.804863,
+          "clientCpuCores": 2.92564186933861,
+          "serverCpuCores": 2.1214335176087986,
+          "totalCpuCores": 5.047075386947409
+        },
+        {
+          "repetition": 2,
+          "throughput": 71043.04166666667,
+          "p50Millis": 0.454399,
+          "p95Millis": 0.559103,
+          "p99Millis": 0.629247,
+          "clientCpuCores": 2.916746501292906,
+          "serverCpuCores": 2.092939581996407,
+          "totalCpuCores": 5.0096860832893135
+        },
+        {
+          "repetition": 3,
+          "throughput": 69902.48333333334,
+          "p50Millis": 0.465407,
+          "p95Millis": 0.568831,
+          "p99Millis": 0.638463,
+          "clientCpuCores": 2.866399722205412,
+          "serverCpuCores": 2.101785443630703,
+          "totalCpuCores": 4.968185165836115
+        },
+        {
+          "repetition": 4,
+          "throughput": 70502.69166666667,
+          "p50Millis": 0.464895,
+          "p95Millis": 0.569855,
+          "p99Millis": 0.633855,
+          "clientCpuCores": 2.9219853979384625,
+          "serverCpuCores": 2.128066021996876,
+          "totalCpuCores": 5.050051419935338
+        },
+        {
+          "repetition": 5,
+          "throughput": 72775.70833333333,
+          "p50Millis": 0.441343,
+          "p95Millis": 0.549375,
+          "p99Millis": 0.617983,
+          "clientCpuCores": 2.9122328436542233,
+          "serverCpuCores": 2.1441984435012973,
+          "totalCpuCores": 5.056431287155521
+        }
+      ],
+      "medians": {
+        "throughput": 70502.69166666667,
+        "p50Millis": 0.464895,
+        "p95Millis": 0.568831,
+        "p99Millis": 0.633855,
+        "clientCpuCores": 2.916746501292906,
+        "serverCpuCores": 2.1214335176087986,
+        "totalCpuCores": 5.047075386947409
+      },
+      "throughputMin": 63969.40833333333,
+      "throughputMax": 72775.70833333333
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 1024,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 73152.5,
+          "p50Millis": 0.404735,
+          "p95Millis": 0.690175,
+          "p99Millis": 0.841727,
+          "clientCpuCores": 8.135016439597845,
+          "serverCpuCores": 6.5438641540974025,
+          "totalCpuCores": 14.678880593695247
+        },
+        {
+          "repetition": 2,
+          "throughput": 73444.10833333334,
+          "p50Millis": 0.393471,
+          "p95Millis": 0.707071,
+          "p99Millis": 0.953855,
+          "clientCpuCores": 8.091029665543399,
+          "serverCpuCores": 6.577714919089243,
+          "totalCpuCores": 14.668744584632641
+        },
+        {
+          "repetition": 3,
+          "throughput": 74263.25,
+          "p50Millis": 0.395519,
+          "p95Millis": 0.680447,
+          "p99Millis": 0.879103,
+          "clientCpuCores": 8.156078492743163,
+          "serverCpuCores": 6.5152124115214285,
+          "totalCpuCores": 14.671290904264591
+        },
+        {
+          "repetition": 4,
+          "throughput": 76511.98333333334,
+          "p50Millis": 0.385023,
+          "p95Millis": 0.664063,
+          "p99Millis": 0.827903,
+          "clientCpuCores": 8.12921748573028,
+          "serverCpuCores": 6.561530506583333,
+          "totalCpuCores": 14.690747992313613
+        },
+        {
+          "repetition": 5,
+          "throughput": 76692.45833333333,
+          "p50Millis": 0.380415,
+          "p95Millis": 0.661503,
+          "p99Millis": 0.882687,
+          "clientCpuCores": 8.101625395216294,
+          "serverCpuCores": 6.570091345204795,
+          "totalCpuCores": 14.67171674042109
+        }
+      ],
+      "medians": {
+        "throughput": 74263.25,
+        "p50Millis": 0.393471,
+        "p95Millis": 0.680447,
+        "p99Millis": 0.879103,
+        "clientCpuCores": 8.12921748573028,
+        "serverCpuCores": 6.561530506583333,
+        "totalCpuCores": 14.67171674042109
+      },
+      "throughputMin": 73152.5,
+      "throughputMax": 76692.45833333333
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 1024,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 35803.76666666667,
+          "p50Millis": 0.889343,
+          "p95Millis": 1.023999,
+          "p99Millis": 1.075199,
+          "clientCpuCores": 1.4117354189625064,
+          "serverCpuCores": 1.997811521078921,
+          "totalCpuCores": 3.4095469400414276
+        },
+        {
+          "repetition": 2,
+          "throughput": 36298.525,
+          "p50Millis": 0.877055,
+          "p95Millis": 1.015295,
+          "p99Millis": 1.068031,
+          "clientCpuCores": 1.4175445107919622,
+          "serverCpuCores": 1.9818919905544037,
+          "totalCpuCores": 3.399436501346366
+        },
+        {
+          "repetition": 3,
+          "throughput": 36628.36666666667,
+          "p50Millis": 0.869375,
+          "p95Millis": 1.004031,
+          "p99Millis": 1.058815,
+          "clientCpuCores": 1.428381610653789,
+          "serverCpuCores": 1.9852513755792414,
+          "totalCpuCores": 3.41363298623303
+        },
+        {
+          "repetition": 4,
+          "throughput": 36624.39166666667,
+          "p50Millis": 0.869375,
+          "p95Millis": 1.004031,
+          "p99Millis": 1.055743,
+          "clientCpuCores": 1.4061909584880457,
+          "serverCpuCores": 1.9841909826215698,
+          "totalCpuCores": 3.3903819411096157
+        },
+        {
+          "repetition": 5,
+          "throughput": 37276.416666666664,
+          "p50Millis": 0.854527,
+          "p95Millis": 0.984575,
+          "p99Millis": 1.034239,
+          "clientCpuCores": 1.4100599330902224,
+          "serverCpuCores": 1.9744642405297204,
+          "totalCpuCores": 3.3845241736199427
+        }
+      ],
+      "medians": {
+        "throughput": 36624.39166666667,
+        "p50Millis": 0.869375,
+        "p95Millis": 1.004031,
+        "p99Millis": 1.058815,
+        "clientCpuCores": 1.4117354189625064,
+        "serverCpuCores": 1.9841909826215698,
+        "totalCpuCores": 3.399436501346366
+      },
+      "throughputMin": 35803.76666666667,
+      "throughputMax": 37276.416666666664
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 1024,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 68664.475,
+          "p50Millis": 0.468991,
+          "p95Millis": 0.579583,
+          "p99Millis": 0.650239,
+          "clientCpuCores": 2.9119172417602703,
+          "serverCpuCores": 2.1077988638722553,
+          "totalCpuCores": 5.019716105632526
+        },
+        {
+          "repetition": 2,
+          "throughput": 67892.60833333334,
+          "p50Millis": 0.483839,
+          "p95Millis": 0.587263,
+          "p99Millis": 0.653823,
+          "clientCpuCores": 2.8738483128246335,
+          "serverCpuCores": 2.125701831124285,
+          "totalCpuCores": 4.999550143948918
+        },
+        {
+          "repetition": 3,
+          "throughput": 68853.94166666667,
+          "p50Millis": 0.466687,
+          "p95Millis": 0.580095,
+          "p99Millis": 0.649215,
+          "clientCpuCores": 2.8677658943616713,
+          "serverCpuCores": 2.092917179424318,
+          "totalCpuCores": 4.960683073785989
+        },
+        {
+          "repetition": 4,
+          "throughput": 69127.70833333333,
+          "p50Millis": 0.467967,
+          "p95Millis": 0.577023,
+          "p99Millis": 0.647167,
+          "clientCpuCores": 2.8971280506449633,
+          "serverCpuCores": 2.1659128679286757,
+          "totalCpuCores": 5.063040918573639
+        },
+        {
+          "repetition": 5,
+          "throughput": 71034.98333333334,
+          "p50Millis": 0.452607,
+          "p95Millis": 0.562175,
+          "p99Millis": 0.631295,
+          "clientCpuCores": 2.943976025102939,
+          "serverCpuCores": 2.119206515885662,
+          "totalCpuCores": 5.063182540988601
+        }
+      ],
+      "medians": {
+        "throughput": 68853.94166666667,
+        "p50Millis": 0.467967,
+        "p95Millis": 0.579583,
+        "p99Millis": 0.649215,
+        "clientCpuCores": 2.8971280506449633,
+        "serverCpuCores": 2.119206515885662,
+        "totalCpuCores": 5.019716105632526
+      },
+      "throughputMin": 67892.60833333334,
+      "throughputMax": 71034.98333333334
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 10240,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 59302.833333333336,
+          "p50Millis": 0.480767,
+          "p95Millis": 0.855551,
+          "p99Millis": 1.233919,
+          "clientCpuCores": 7.983361633409108,
+          "serverCpuCores": 6.589925369215773,
+          "totalCpuCores": 14.57328700262488
+        },
+        {
+          "repetition": 2,
+          "throughput": 60939.475,
+          "p50Millis": 0.474879,
+          "p95Millis": 0.816639,
+          "p99Millis": 1.144831,
+          "clientCpuCores": 7.960550528382174,
+          "serverCpuCores": 6.596509843110387,
+          "totalCpuCores": 14.557060371492561
+        },
+        {
+          "repetition": 3,
+          "throughput": 60756.775,
+          "p50Millis": 0.477439,
+          "p95Millis": 0.813567,
+          "p99Millis": 1.128447,
+          "clientCpuCores": 7.940942068457946,
+          "serverCpuCores": 6.62152681119737,
+          "totalCpuCores": 14.562468879655317
+        },
+        {
+          "repetition": 4,
+          "throughput": 61167.48333333333,
+          "p50Millis": 0.466175,
+          "p95Millis": 0.826879,
+          "p99Millis": 1.207295,
+          "clientCpuCores": 7.8572257107693915,
+          "serverCpuCores": 6.6086983928069785,
+          "totalCpuCores": 14.46592410357637
+        },
+        {
+          "repetition": 5,
+          "throughput": 62506.00833333333,
+          "p50Millis": 0.463359,
+          "p95Millis": 0.794623,
+          "p99Millis": 1.115135,
+          "clientCpuCores": 7.921993360533547,
+          "serverCpuCores": 6.653430965113061,
+          "totalCpuCores": 14.575424325646608
+        }
+      ],
+      "medians": {
+        "throughput": 60939.475,
+        "p50Millis": 0.474879,
+        "p95Millis": 0.816639,
+        "p99Millis": 1.144831,
+        "clientCpuCores": 7.940942068457946,
+        "serverCpuCores": 6.6086983928069785,
+        "totalCpuCores": 14.562468879655317
+      },
+      "throughputMin": 59302.833333333336,
+      "throughputMax": 62506.00833333333
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 10240,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 32354.458333333332,
+          "p50Millis": 0.999935,
+          "p95Millis": 1.372159,
+          "p99Millis": 1.537023,
+          "clientCpuCores": 2.001698478474852,
+          "serverCpuCores": 2.601832236890519,
+          "totalCpuCores": 4.6035307153653715
+        },
+        {
+          "repetition": 2,
+          "throughput": 32819.691666666666,
+          "p50Millis": 0.983551,
+          "p95Millis": 1.355775,
+          "p99Millis": 1.514495,
+          "clientCpuCores": 1.979013530808281,
+          "serverCpuCores": 2.601895511839654,
+          "totalCpuCores": 4.580909042647935
+        },
+        {
+          "repetition": 3,
+          "throughput": 32605.133333333335,
+          "p50Millis": 0.992767,
+          "p95Millis": 1.358847,
+          "p99Millis": 1.518591,
+          "clientCpuCores": 1.9968716383920635,
+          "serverCpuCores": 2.611934646798069,
+          "totalCpuCores": 4.608806285190132
+        },
+        {
+          "repetition": 4,
+          "throughput": 32931.03333333333,
+          "p50Millis": 0.983039,
+          "p95Millis": 1.346559,
+          "p99Millis": 1.514495,
+          "clientCpuCores": 1.9998172303542319,
+          "serverCpuCores": 2.5983369356757486,
+          "totalCpuCores": 4.59815416602998
+        },
+        {
+          "repetition": 5,
+          "throughput": 33281.10833333333,
+          "p50Millis": 0.972287,
+          "p95Millis": 1.330175,
+          "p99Millis": 1.491967,
+          "clientCpuCores": 2.004200498517846,
+          "serverCpuCores": 2.604626793625,
+          "totalCpuCores": 4.608827292142847
+        }
+      ],
+      "medians": {
+        "throughput": 32819.691666666666,
+        "p50Millis": 0.983551,
+        "p95Millis": 1.355775,
+        "p99Millis": 1.514495,
+        "clientCpuCores": 1.9998172303542319,
+        "serverCpuCores": 2.601895511839654,
+        "totalCpuCores": 4.6035307153653715
+      },
+      "throughputMin": 32354.458333333332,
+      "throughputMax": 33281.10833333333
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 10240,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 51446.075,
+          "p50Millis": 0.581119,
+          "p95Millis": 0.848383,
+          "p99Millis": 0.930303,
+          "clientCpuCores": 2.4386773758804483,
+          "serverCpuCores": 2.079629128854246,
+          "totalCpuCores": 4.518306504734694
+        },
+        {
+          "repetition": 2,
+          "throughput": 52657.51666666667,
+          "p50Millis": 0.575999,
+          "p95Millis": 0.824319,
+          "p99Millis": 0.909311,
+          "clientCpuCores": 2.4676512032700355,
+          "serverCpuCores": 2.10934948166492,
+          "totalCpuCores": 4.577000684934955
+        },
+        {
+          "repetition": 3,
+          "throughput": 51254.025,
+          "p50Millis": 0.571391,
+          "p95Millis": 0.876031,
+          "p99Millis": 0.950271,
+          "clientCpuCores": 2.415506494899529,
+          "serverCpuCores": 2.0303051802006378,
+          "totalCpuCores": 4.445811675100167
+        },
+        {
+          "repetition": 4,
+          "throughput": 52597.041666666664,
+          "p50Millis": 0.559615,
+          "p95Millis": 0.848895,
+          "p99Millis": 0.926207,
+          "clientCpuCores": 2.4094763575519598,
+          "serverCpuCores": 2.075578251063553,
+          "totalCpuCores": 4.485054608615513
+        },
+        {
+          "repetition": 5,
+          "throughput": 53774.208333333336,
+          "p50Millis": 0.548863,
+          "p95Millis": 0.824831,
+          "p99Millis": 0.898047,
+          "clientCpuCores": 2.4501641604697397,
+          "serverCpuCores": 2.0693150950833332,
+          "totalCpuCores": 4.5194792555530725
+        }
+      ],
+      "medians": {
+        "throughput": 52597.041666666664,
+        "p50Millis": 0.571391,
+        "p95Millis": 0.848383,
+        "p99Millis": 0.926207,
+        "clientCpuCores": 2.4386773758804483,
+        "serverCpuCores": 2.075578251063553,
+        "totalCpuCores": 4.518306504734694
+      },
+      "throughputMin": 51254.025,
+      "throughputMax": 53774.208333333336
+    },
+    {
+      "library": "nimrod",
+      "payloadBytes": 102400,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 10900.4,
+          "p50Millis": 2.205695,
+          "p95Millis": 6.303743,
+          "p99Millis": 12.812287,
+          "clientCpuCores": 7.167382498197786,
+          "serverCpuCores": 7.216451110538657,
+          "totalCpuCores": 14.383833608736442
+        },
+        {
+          "repetition": 2,
+          "throughput": 10964.783333333333,
+          "p50Millis": 2.103295,
+          "p95Millis": 6.574079,
+          "p99Millis": 13.819903,
+          "clientCpuCores": 7.168713345033669,
+          "serverCpuCores": 7.1994654166,
+          "totalCpuCores": 14.368178761633668
+        },
+        {
+          "repetition": 3,
+          "throughput": 10961.608333333334,
+          "p50Millis": 2.121727,
+          "p95Millis": 6.328319,
+          "p99Millis": 13.746175,
+          "clientCpuCores": 7.202267874688495,
+          "serverCpuCores": 7.178347318731685,
+          "totalCpuCores": 14.38061519342018
+        },
+        {
+          "repetition": 4,
+          "throughput": 10997.8,
+          "p50Millis": 2.105343,
+          "p95Millis": 6.414335,
+          "p99Millis": 13.770751,
+          "clientCpuCores": 7.181942573332519,
+          "serverCpuCores": 7.206329116085041,
+          "totalCpuCores": 14.38827168941756
+        },
+        {
+          "repetition": 5,
+          "throughput": 10951.816666666668,
+          "p50Millis": 2.078719,
+          "p95Millis": 6.500351,
+          "p99Millis": 14.131199,
+          "clientCpuCores": 7.190066356687502,
+          "serverCpuCores": 7.202542005369169,
+          "totalCpuCores": 14.39260836205667
+        }
+      ],
+      "medians": {
+        "throughput": 10961.608333333334,
+        "p50Millis": 2.105343,
+        "p95Millis": 6.414335,
+        "p99Millis": 13.770751,
+        "clientCpuCores": 7.181942573332519,
+        "serverCpuCores": 7.202542005369169,
+        "totalCpuCores": 14.383833608736442
+      },
+      "throughputMin": 10900.4,
+      "throughputMax": 10997.8
+    },
+    {
+      "library": "grpc",
+      "payloadBytes": 102400,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 8146.533333333334,
+          "p50Millis": 3.821567,
+          "p95Millis": 4.882431,
+          "p99Millis": 6.578175,
+          "clientCpuCores": 2.7686166440369964,
+          "serverCpuCores": 2.7194276687496113,
+          "totalCpuCores": 5.488044312786608
+        },
+        {
+          "repetition": 2,
+          "throughput": 8091.916666666667,
+          "p50Millis": 3.872767,
+          "p95Millis": 4.886527,
+          "p99Millis": 6.582271,
+          "clientCpuCores": 2.8832189720227497,
+          "serverCpuCores": 2.756671406975,
+          "totalCpuCores": 5.63989037899775
+        },
+        {
+          "repetition": 3,
+          "throughput": 8042.241666666667,
+          "p50Millis": 3.885055,
+          "p95Millis": 4.956159,
+          "p99Millis": 6.545407,
+          "clientCpuCores": 2.838546288676944,
+          "serverCpuCores": 2.756584433685032,
+          "totalCpuCores": 5.595130722361976
+        },
+        {
+          "repetition": 4,
+          "throughput": 8205.866666666667,
+          "p50Millis": 3.807231,
+          "p95Millis": 4.825087,
+          "p99Millis": 6.483967,
+          "clientCpuCores": 2.8139990650497224,
+          "serverCpuCores": 2.718710112374459,
+          "totalCpuCores": 5.532709177424181
+        },
+        {
+          "repetition": 5,
+          "throughput": 8075.441666666667,
+          "p50Millis": 3.868671,
+          "p95Millis": 5.009407,
+          "p99Millis": 6.488063,
+          "clientCpuCores": 2.863630358150521,
+          "serverCpuCores": 2.7812671377269798,
+          "totalCpuCores": 5.644897495877501
+        }
+      ],
+      "medians": {
+        "throughput": 8091.916666666667,
+        "p50Millis": 3.868671,
+        "p95Millis": 4.886527,
+        "p99Millis": 6.545407,
+        "clientCpuCores": 2.838546288676944,
+        "serverCpuCores": 2.756584433685032,
+        "totalCpuCores": 5.595130722361976
+      },
+      "throughputMin": 8042.241666666667,
+      "throughputMax": 8205.866666666667
+    },
+    {
+      "library": "dubbo2",
+      "payloadBytes": 102400,
+      "concurrency": 32,
+      "repetitions": [
+        {
+          "repetition": 1,
+          "throughput": 11471.683333333332,
+          "p50Millis": 2.510847,
+          "p95Millis": 4.093951,
+          "p99Millis": 4.579327,
+          "clientCpuCores": 1.5843448998914955,
+          "serverCpuCores": 1.4244452961223844,
+          "totalCpuCores": 3.00879019601388
+        },
+        {
+          "repetition": 2,
+          "throughput": 12441.258333333333,
+          "p50Millis": 2.441215,
+          "p95Millis": 3.354623,
+          "p99Millis": 4.444159,
+          "clientCpuCores": 1.613181328674377,
+          "serverCpuCores": 1.410864167775,
+          "totalCpuCores": 3.024045496449377
+        },
+        {
+          "repetition": 3,
+          "throughput": 12084.833333333334,
+          "p50Millis": 2.471935,
+          "p95Millis": 3.962879,
+          "p99Millis": 4.603903,
+          "clientCpuCores": 1.5835017260410893,
+          "serverCpuCores": 1.4429153915665343,
+          "totalCpuCores": 3.0264171176076236
+        },
+        {
+          "repetition": 4,
+          "throughput": 12455.825,
+          "p50Millis": 2.445311,
+          "p95Millis": 3.201023,
+          "p99Millis": 4.476927,
+          "clientCpuCores": 1.5989277189194626,
+          "serverCpuCores": 1.4281980478863607,
+          "totalCpuCores": 3.027125766805823
+        },
+        {
+          "repetition": 5,
+          "throughput": 12573.058333333332,
+          "p50Millis": 2.424831,
+          "p95Millis": 3.147775,
+          "p99Millis": 4.448255,
+          "clientCpuCores": 1.5963243919726813,
+          "serverCpuCores": 1.415857944162708,
+          "totalCpuCores": 3.012182336135389
+        }
+      ],
+      "medians": {
+        "throughput": 12441.258333333333,
+        "p50Millis": 2.445311,
+        "p95Millis": 3.354623,
+        "p99Millis": 4.476927,
+        "clientCpuCores": 1.5963243919726813,
+        "serverCpuCores": 1.4244452961223844,
+        "totalCpuCores": 3.024045496449377
+      },
+      "throughputMin": 11471.683333333332,
+      "throughputMax": 12573.058333333332
+    }
+  ]
+}

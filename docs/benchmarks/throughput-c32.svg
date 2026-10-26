@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="530" viewBox="0 0 820 530" role="img" aria-labelledby="title desc">
+<title id="title">RPC throughput by payload</title>
+<desc id="desc">Medians of five repetitions from published-baseline. 128 B: Nimrod IPC 76,449.250 completed RPC/s, gRPC Java 37,674.733 completed RPC/s, Apache Dubbo2 70,502.692 completed RPC/s; 1 KB: Nimrod IPC 74,263.250 completed RPC/s, gRPC Java 36,624.392 completed RPC/s, Apache Dubbo2 68,853.942 completed RPC/s; 10 KB: Nimrod IPC 60,939.475 completed RPC/s, gRPC Java 32,819.692 completed RPC/s, Apache Dubbo2 52,597.042 completed RPC/s; 100 KB: Nimrod IPC 10,961.608 completed RPC/s, gRPC Java 8,091.917 completed RPC/s, Apache Dubbo2 12,441.258 completed RPC/s</desc>
+<rect width="820" height="530" fill="#ffffff"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#172b3a">
+<text x="24" y="32" font-size="20" font-weight="700">RPC throughput by payload</text>
+<text x="24" y="55" font-size="13">Concurrency 32 · median of 5 runs · completed RPC/s</text>
+<rect x="24" y="73" width="13" height="13" rx="2" fill="#087e8b"/>
+<text x="44" y="84" font-size="13">Nimrod IPC</text>
+<rect x="244" y="73" width="13" height="13" rx="2" fill="#4667b1"/>
+<text x="264" y="84" font-size="13">gRPC Java</text>
+<rect x="464" y="73" width="13" height="13" rx="2" fill="#bf6516"/>
+<text x="484" y="84" font-size="13">Apache Dubbo2</text>
+<line x1="100.0" y1="104" x2="100.0" y2="455" stroke="#e1e7eb"/>
+<text x="100.0" y="478" text-anchor="middle" font-size="12">0</text>
+<line x1="217.0" y1="104" x2="217.0" y2="455" stroke="#e1e7eb"/>
+<text x="217.0" y="478" text-anchor="middle" font-size="12">16,000</text>
+<line x1="334.0" y1="104" x2="334.0" y2="455" stroke="#e1e7eb"/>
+<text x="334.0" y="478" text-anchor="middle" font-size="12">32,000</text>
+<line x1="451.0" y1="104" x2="451.0" y2="455" stroke="#e1e7eb"/>
+<text x="451.0" y="478" text-anchor="middle" font-size="12">48,000</text>
+<line x1="568.0" y1="104" x2="568.0" y2="455" stroke="#e1e7eb"/>
+<text x="568.0" y="478" text-anchor="middle" font-size="12">64,000</text>
+<line x1="685.0" y1="104" x2="685.0" y2="455" stroke="#e1e7eb"/>
+<text x="685.0" y="478" text-anchor="middle" font-size="12">80,000</text>
+<text x="85" y="148" text-anchor="end" font-size="14" font-weight="700">128 B</text>
+<rect x="100" y="112" width="559.035" height="18" rx="2" fill="#087e8b"/>
+<text x="666.035" y="126" font-size="12">76,449</text>
+<rect x="100" y="135" width="275.496" height="18" rx="2" fill="#4667b1"/>
+<text x="382.496" y="149" font-size="12">37,675</text>
+<rect x="100" y="158" width="515.551" height="18" rx="2" fill="#bf6516"/>
+<text x="622.551" y="172" font-size="12">70,503</text>
+<text x="85" y="236" text-anchor="end" font-size="14" font-weight="700">1 KB</text>
+<rect x="100" y="200" width="543.050" height="18" rx="2" fill="#087e8b"/>
+<text x="650.050" y="214" font-size="12">74,263</text>
+<rect x="100" y="223" width="267.816" height="18" rx="2" fill="#4667b1"/>
+<text x="374.816" y="237" font-size="12">36,624</text>
+<rect x="100" y="246" width="503.494" height="18" rx="2" fill="#bf6516"/>
+<text x="610.494" y="260" font-size="12">68,854</text>
+<text x="85" y="324" text-anchor="end" font-size="14" font-weight="700">10 KB</text>
+<rect x="100" y="288" width="445.620" height="18" rx="2" fill="#087e8b"/>
+<text x="552.620" y="302" font-size="12">60,939</text>
+<rect x="100" y="311" width="239.994" height="18" rx="2" fill="#4667b1"/>
+<text x="346.994" y="325" font-size="12">32,820</text>
+<rect x="100" y="334" width="384.616" height="18" rx="2" fill="#bf6516"/>
+<text x="491.616" y="348" font-size="12">52,597</text>
+<text x="85" y="412" text-anchor="end" font-size="14" font-weight="700">100 KB</text>
+<rect x="100" y="376" width="80.157" height="18" rx="2" fill="#087e8b"/>
+<text x="187.157" y="390" font-size="12">10,962</text>
+<rect x="100" y="399" width="59.172" height="18" rx="2" fill="#4667b1"/>
+<text x="166.172" y="413" font-size="12">8,092</text>
+<rect x="100" y="422" width="90.977" height="18" rx="2" fill="#bf6516"/>
+<text x="197.977" y="436" font-size="12">12,441</text>
+<text x="100" y="501" font-size="12">completed RPC/s · higher is better</text>
+<text x="24" y="521" font-size="11" fill="#536570">Same-host Java 21 · 30 s warmup / 120 s measurement · 1 KB = 1,024 B</text>
+</g>
+</svg>

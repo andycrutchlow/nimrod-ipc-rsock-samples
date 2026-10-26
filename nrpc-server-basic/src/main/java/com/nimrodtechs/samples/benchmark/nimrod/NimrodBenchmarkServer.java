@@ -11,7 +11,7 @@ import java.util.Map;
 @Import(BenchmarkRmi__NimrodRmiController.class)
 public class NimrodBenchmarkServer {
     @Bean BenchmarkApplications.Server benchmarkServerState(Environment env) throws Exception {
-        return BenchmarkApplications.server(env,Map.of("library","nimrod","version","4.3.1-SNAPSHOT","protocol","rsocket-tcp","serializer","kryo5","serverWorkers",8));
+        return BenchmarkApplications.server(env,Map.of("library","nimrod","version",env.getRequiredProperty("benchmark.nimrod-version"),"protocol","rsocket-tcp","serializer","kryo5","serverWorkers",8));
     }
     @Bean BenchmarkRmi benchmarkService(BenchmarkApplications.Server server) { return server::invoke; }
 }

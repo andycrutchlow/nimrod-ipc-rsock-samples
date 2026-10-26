@@ -1,5 +1,7 @@
 # Three-library unary RPC benchmark design
 
+> Historical record: version references, commands and validation statements below describe the dated investigation/design, not current build requirements. Current samples use **Nimrod IPC 4.3.1 from Maven Central**; see [release validation](release-validation.md) and the [completed 180-run benchmark report](../BENCHMARKS.md).
+
 > Implementation update (2026-10-16): the approved unary comparison is implemented. Use [benchmark-running.md](benchmark-running.md) for commands/results and [nimrod-timeouts.md](nimrod-timeouts.md) for cancellation limits. Runtime checks selected the Kryo SPI bundled in Dubbo 2.7.23 with Kryo 4.0.2 / kryo-serializers 0.42, replacing the proposed external extension 1.0.1 because of duplicate classes and incompatible Kryo dependencies. Java 21 also requires the documented module-access flags. The full 180-run matrix is manual-only and has not been executed.
 
 Revised 2026-10-16. Implemented; only build/integration/smoke checks have been run, with no performance conclusions. This design replaces the earlier broad transport/event suite and implements the scope in the [implementation plan](implementation-plan.md). Preserve and extend the working Nimrod/gRPC applications. Add only Apache Dubbo2 native RPC; capability and serializer evidence is in the [comparison matrix](comparison-matrix.md).

@@ -1,5 +1,7 @@
 # Developer experience in the implemented comparison
 
+Current samples use **Nimrod IPC 4.3.1 from Maven Central**, with Java 21 as the minimum/compiler target. See [release validation](release-validation.md) for Java 21/25 checks and [BENCHMARKS.md](../BENCHMARKS.md) for the archived performance binary.
+
 All three applications execute the same `Workload` validation/pricing/full-body echo code in `benchmark-common`. Shared helpers provide payload generation, the synchronous load loop, histograms, failure handling and result output; those helpers are not counted as library-specific service boilerplate. These observations concern this implementation, not a general usability ranking.
 
 | Concern | Nimrod IPC | gRPC Java | Native Dubbo2 |
@@ -9,7 +11,7 @@ All three applications execute the same `Workload` validation/pricing/full-body 
 | Provider implementation | Profile configuration imports generated controller; service bean delegates to shared processor | Generated service base implemented with observer completion/error mapping, DTO mapping and a bounded worker executor | Boot-managed `ServiceConfig`, native `ProtocolConfig`, ordinary interface implementation |
 | Client implementation | Import generated client, invoke Java method on injected interface | Reuse existing configured `pricing` channel/stub injection; per-call native deadline and wire/POJO mappings | Boot-managed direct `ReferenceConfig`, invoke ordinary Java method; no registry dependency |
 | Serialization | Nimrod Kryo 5 path using its existing `application/x-kryo` strategies | Protobuf 3.25.3 generated types; explicit byte/POJO mapping | Bundled Dubbo2 Kryo SPI, Kryo 4.0.2 and kryo-serializers 0.42; simple Serializable POJO |
-| Application configuration | Logical service `benchmark`, host/port, requester pool sized to concurrency; generated eight-worker scheduler | Existing channel address/plaintext configuration and eight-worker application processing | Native TCP bind/direct `dubbo://` URL, registry `N/A`, explicit Kryo, private connection count, timeout/retry/heartbeat and provider worker settings |
+| Application configuration | Logical service `benchmark`, host/port, requester pool sized to concurrency; default scheduling selected by the benchmark contract (no generated scheduler offload) | Existing channel address/plaintext configuration and eight-worker application processing | Native TCP bind/direct `dubbo://` URL, registry `N/A`, explicit Kryo, private connection count, timeout/retry/heartbeat and provider worker settings |
 | Errors and timeout | Proxy throws local/remote exceptions; no exposed native client network deadline; benchmark interrupt/abort required | gRPC status/deadline exceptions mapped to common result counts | Native Dubbo `RpcException`/timeout path mapped to common result counts |
 | Java 21 integration | Reuses the existing working app and generated code | Reuses the existing working app/starter | Programmatic API avoids legacy starter; proxy/serializer module-access flags and matching Kryo dependencies are necessary |
 

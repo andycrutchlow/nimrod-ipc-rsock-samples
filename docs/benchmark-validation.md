@@ -1,5 +1,7 @@
 # Implementation validation
 
+> Historical record: version references, commands and validation statements below describe the dated investigation/design, not current build requirements. Current samples use **Nimrod IPC 4.3.1 from Maven Central**; see [release validation](release-validation.md) and the [completed 180-run benchmark report](../BENCHMARKS.md).
+
 Validated 2026-10-16 on Oracle GraalVM Java 21.0.8, Maven 3.8.1, macOS 14.5 x86_64 and Spring Boot 3.5.4.
 
 - Clean offline Maven `verify` and dependency-classpath generation: all 15 reactor projects passed.

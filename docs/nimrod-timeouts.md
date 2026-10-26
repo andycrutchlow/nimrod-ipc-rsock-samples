@@ -1,5 +1,7 @@
 # Nimrod benchmark client timeout investigation
 
+Current samples resolve **Nimrod IPC 4.3.1 from Maven Central**. This note preserves the archived pre-release timeout investigation; its version references identify the inspected binary. See [binary provenance](../BENCHMARKS.md#release-and-benchmark-binary-provenance) and [release validation](release-validation.md).
+
 The inspected 4.3.1-SNAPSHOT `RemoteServerService.executeRmiMethod` borrows a `RSocketRequester` from Commons Pool, calls `retrieveMono(responseClass).block()` without a duration and returns the requester in `finally`. Pool borrowing also has no explicit wait limit in the current factory configuration. Keepalive/reconnect options govern connection detection/recovery; they are not a request deadline. The benchmark uses the generated proxy unchanged.
 
 The annotation processor can add a server-side `Mono.timeout` from interface `timeoutMs`. That bounds the server reactive response, not a client waiting on an unreachable or silent peer, and cannot establish cancellation of arbitrary application work. The benchmark does not repurpose it as proof of a native client timeout.

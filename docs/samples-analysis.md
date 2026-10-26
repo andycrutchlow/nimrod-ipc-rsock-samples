@@ -1,5 +1,7 @@
 # Samples project analysis
 
+> Historical record: version references, commands and validation statements below describe the dated investigation/design, not current build requirements. Current samples use **Nimrod IPC 4.3.1 from Maven Central**; see [release validation](release-validation.md) and the [completed 180-run benchmark report](../BENCHMARKS.md).
+
 > Scope update (2026-10-16): the [revised implementation plan](implementation-plan.md) supersedes the implementation recommendations and benchmark scope below. Current scope is only Nimrod IPC, gRPC Java and Apache Dubbo, reusing the existing pricing applications. Other-library proposals below are historical and are not scheduled. Nimrod now uses 4.3.1-SNAPSHOT, including the requester-pool initialization fix.
 
 Analysis date: 2026-10-13. Scope: all ten Maven modules, every sample Java source, protobuf contract, application YAML, root/module POMs and README. This is a static review; no application, build or benchmark was run, and no implementation was changed. Existing generated sources were inspected as supporting evidence, not regenerated.

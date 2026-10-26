@@ -4,7 +4,7 @@ The implementation extends the existing Nimrod and gRPC applications under the `
 
 ## Commands
 
-Requirements: Java 21, Maven, Python 3, locally installed Nimrod `4.3.1-SNAPSHOT`, and Maven Central dependencies. `lsof` is recommended for observed socket counts; `ps` supplies RSS. All scripts use the standard Python library. Execute from the repository root.
+Requirements: Java 21 or later, Maven and Python 3. The samples resolve Nimrod **4.3.1 from Maven Central** using the root `nimrod.ipc.version` property. No local Nimrod installation is required. Java 21 remains the compiler target; see [release validation](release-validation.md) for Java 21/25 checks. [BENCHMARKS.md](../BENCHMARKS.md) is the authoritative report for the completed 180-run baseline and its distinct pre-release binary provenance. `lsof` is recommended for observed socket counts; `ps` supplies RSS. All scripts use the standard Python library. Execute from the repository root.
 
 Build and run unit checks, and generate runnable classpaths:
 
@@ -72,7 +72,7 @@ Every library validates the same deterministic body, produces the same price and
 
 Client latency begins immediately before calling the transport function and ends after response mapping/full validation. It includes pool waiting, serialization, network and server processing; input generation and recording are outside the timer. Quantiles use bounded HdrHistogram recorders with three significant digits; the final maximum is the exact largest measured latency. Interval histogram maxima are quantized upper bounds. Failures/timeouts are separate from successful latency populations.
 
-Throughput counts validated completions inside the measurement window. Warmup is fully drained before resetting. Post-window completions and their latencies have separate fields. Concurrency is fixed persistent synchronous workers, each with one unfinished call, not TCP connection count. Application processing uses eight workers; no per-call client task queue exists. The gRPC handler offloads to an eight-worker executor with a 32-entry queue; Nimrod uses its generated eight-worker scheduler; Dubbo uses a fixed eight-worker/32-entry provider queue.
+Throughput counts validated completions inside the measurement window. Warmup is fully drained before resetting. Post-window completions and their latencies have separate fields. Concurrency is fixed persistent synchronous workers, each with one unfinished call, not TCP connection count; no per-call client task queue exists. The gRPC handler offloads to an eight-worker executor with a 32-entry queue; Dubbo uses a fixed eight-worker/32-entry provider queue. Nimrod's benchmark contract uses default scheduling with no generated scheduler offload. Its server metadata reports eight workers, which does not establish an eight-worker application scheduler; see the [execution discrepancy in the canonical report](../BENCHMARKS.md#frameworks-and-process-topology).
 
 This is a closed-loop capacity workload. Offered arrivals slow during stalls; these quantiles do not support independent-arrival SLO claims or demonstrate the elimination of coordinated omission. Open-loop scheduling is not implemented in this iteration. No smoke throughput/latency values are presented as performance conclusions.
 
@@ -89,7 +89,7 @@ Suite files:
 Each `<library>-<bytes>B-c<concurrency>-r<repetition>/` contains:
 
 - `launch.json`, `server.log`, `client.log`, `run-result.json`: exact commands, process diagnostics and outcome.
-- `client/manifest.json`, `server/manifest.json`: Java/JVM environment, configuration, transport identity and SHA-256 of classpath JARs, including local snapshot artifacts.
+- `client/manifest.json`, `server/manifest.json`: Java/JVM environment, configuration, transport identity and SHA-256 of classpath JARs, including their actual versions. Future Nimrod manifests use the Maven-filtered `benchmark.nimrod-version` property; archived manifests retain their recorded pre-release version.
 - `client/summary.json`: readiness/warmup/measurement attempted/completed/drain/error/timeout/invalid/unresolved counters; successful latency p50/p95/p99/exact maximum in nanoseconds; measurement completed RPC/s; validity.
 - `client/intervals.csv` and `*.hlog`: interval distributions/rates and mergeable phase histograms. CSV units are in column names.
 - `client/resources.csv`, `server/resources.csv`: streamed one-second process CPU, heap, nonheap, direct-buffer, thread and GC readings.

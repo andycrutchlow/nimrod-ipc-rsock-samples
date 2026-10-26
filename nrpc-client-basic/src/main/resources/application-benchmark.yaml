@@ -1,3 +1,5 @@
+benchmark:
+  nimrod-version: "@nimrod.ipc.version@"
 spring:
   main:
     web-application-type: none
